@@ -4,10 +4,13 @@ const SPEED = 300.0
 
 var last_direction: Vector2 = Vector2.RIGHT
 
-@onready
-var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var Weapon: Node2D = $Weapon
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:	
+	if Input.is_action_just_pressed("attack1") and Weapon.is_ready:
+		Weapon.shoot(last_direction)
+	
 	_process_movement()
 	_process_animation()
 	move_and_slide()
