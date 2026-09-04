@@ -21,9 +21,8 @@ func _physics_process(_delta: float) -> void:
 
 func _attack(delta: float) -> void:
 	var direction = Vector2.ZERO
-	print(str(target.position - position))
-	#if not on target
-	if((target.position - position).abs() < Vector2(10,10).abs()):
+	#if not close enough to target
+	if(target.position.distance_to(position) < Vector2(10,10).length()):
 		direction = Vector2.ZERO
 	else:
 		direction = (target.position - position).normalized()

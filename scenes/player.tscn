@@ -288,5 +288,3 @@ position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_g2els")
 
 [node name="Weapon" parent="." unique_id=1222061813 instance=ExtResource("3_qhqgy")]
-
-
