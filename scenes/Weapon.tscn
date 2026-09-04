@@ -9,8 +9,6 @@ script = ExtResource("1_wkycj")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1637998840]
 texture = ExtResource("2_pkyns")
 
-[node name="ShootingPoint" type="Marker2D" parent="Sprite2D" unique_id=818845590]
-
 [node name="Cooldown" type="Timer" parent="." unique_id=975780881]
 wait_time = 0.5
 one_shot = true
