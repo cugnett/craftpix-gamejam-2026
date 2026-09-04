@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="craftpix-gamejam-2026"
+run/main_scene="uid://c7b6fiadiwv8m"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [editor]
@@ -30,6 +31,7 @@ version_control/autoload_on_startup=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
