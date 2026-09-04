@@ -274,6 +274,7 @@ animations = [{
 radius = 32.01562
 
 [node name="Player" type="CharacterBody2D" unique_id=512779361]
+scale = Vector2(0.65, 0.65)
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=749209541]

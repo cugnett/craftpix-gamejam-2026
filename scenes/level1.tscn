@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c7b6fiadiwv8m"]
 
 [ext_resource type="TileSet" uid="uid://dc66vajpp48h2" path="res://assets/tilesets/level1_tileset.tres" id="1_g2h75"]
+[ext_resource type="PackedScene" uid="uid://djb6ajxxhfro2" path="res://scenes/player.tscn" id="2_wwpf4"]
 
 [node name="Level1" type="Node2D" unique_id=77493514]
 
@@ -17,3 +18,6 @@ tile_set = ExtResource("1_g2h75")
 offset = Vector2(-4, 0)
 anchor_mode = 0
 zoom = Vector2(2.531, 2.531)
+
+[node name="Player" parent="." unique_id=512779361 instance=ExtResource("2_wwpf4")]
+position = Vector2(136, 160)

@@ -11,17 +11,13 @@ config_version=5
 [application]
 
 config/name="craftpix-gamejam-2026"
-<<<<<<< HEAD
 run/main_scene="uid://c7b6fiadiwv8m"
-=======
-run/main_scene="uid://djb6ajxxhfro2"
->>>>>>> 42b89fc2056515d8198d41e3d37e035cc5b4e519
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor]
