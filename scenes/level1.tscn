@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dc66vajpp48h2" path="res://assets/tilesets/level1_tileset.tres" id="1_g2h75"]
 [ext_resource type="Script" uid="uid://bns28ba4k5dny" path="res://scripts/level.gd" id="1_m7ahb"]
+[ext_resource type="PackedScene" uid="uid://blt17pspfg8iw" path="res://scenes/enemy.tscn" id="2_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://djb6ajxxhfro2" path="res://scenes/player.tscn" id="2_wwpf4"]
 
 [node name="Level1" type="Node2D" unique_id=77493514]
@@ -23,6 +24,10 @@ zoom = Vector2(2.531, 2.531)
 
 [node name="Player" parent="." unique_id=512779361 instance=ExtResource("2_wwpf4")]
 position = Vector2(136, 160)
+
+[node name="Enemy" parent="." unique_id=1841075107 instance=ExtResource("2_dwgg1")]
+position = Vector2(336, 112)
+collision_mask = 2
 
 [connection signal="change_camera_pos_x" from="Player" to="." method="_on_player_change_camera_pos_x"]
 [connection signal="change_camera_pos_y" from="Player" to="." method="_on_player_change_camera_pos_y"]
