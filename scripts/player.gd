@@ -15,7 +15,7 @@ var last_direction: Vector2 = Vector2.RIGHT
 @export var camera_limit_left: int = 0
 
 # player position on the map. (0,0) is determined by the room on the top left.
-@export var player_map_position = Vector2(0,1)
+@export var player_map_position = Vector2(0,0)
 
 
 signal change_camera_pos_y

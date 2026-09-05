@@ -19,11 +19,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _activate_spawner(player_map_position: Vector2, player_position: Vector2) -> void:
-	print("player pos" + str(player_position))
+	print("player pos" + str(player_map_position))
 	for i in randi_range(1,4):
 		instance = enemy.instantiate()
-		instance.position.x = player_map_position.x * camera_width + randi_range(10,camera_width)
-		instance.position.y = player_map_position.y * camera_height - randi_range(10,camera_height) +100
+		instance.position.x = player_map_position.x * camera_width + randi_range(48,camera_width-48)
+		instance.position.y = player_map_position.y * camera_height + randi_range(48,camera_height-48)
 		print("enemy pos" + str(i) + ":"+ str(instance.position))
 		get_parent().add_child(instance)
 

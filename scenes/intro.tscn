@@ -1,13 +1,16 @@
 [gd_scene format=4 uid="uid://dqat1pqfdhaij"]
 
 [ext_resource type="Script" uid="uid://g5qipgfhlldu" path="res://scripts/intro.gd" id="1_ioskq"]
-[ext_resource type="Texture2D" uid="uid://ddh4diaax5k4p" path="res://assets/tilesets/craftpix-net-160005-free-ruined-temple-top-down-location-pixel-art/Discoverer2_Idle.png" id="2_4bx60"]
 [ext_resource type="Texture2D" uid="uid://6a3ww73fgrb1" path="res://assets/tilesets/craftpix-net-160005-free-ruined-temple-top-down-location-pixel-art/Decorative_cracks_exterior.png" id="2_bu1yb"]
 [ext_resource type="Texture2D" uid="uid://dqk4oi1oomtjt" path="res://assets/tilesets/craftpix-net-160005-free-ruined-temple-top-down-location-pixel-art/Discoverer2_bends_over_without_shadow.png" id="2_i2l1n"]
 [ext_resource type="Texture2D" uid="uid://blwkefuk13mgc" path="res://assets/characters/hero1.png" id="2_yjqpq"]
 [ext_resource type="Texture2D" uid="uid://b47dipwa5jbrt" path="res://assets/tilesets/craftpix-net-160005-free-ruined-temple-top-down-location-pixel-art/Exterior_objects.png" id="3_t1qkj"]
 [ext_resource type="Texture2D" uid="uid://caopuaqk53ndh" path="res://assets/tilesets/craftpix-net-160005-free-ruined-temple-top-down-location-pixel-art/Discoverer2_straightens_up_without_shadow.png" id="3_wfs7u"]
 [ext_resource type="Texture2D" uid="uid://dnr86cn8s0ri4" path="res://assets/tilesets/craftpix-net-160005-free-ruined-temple-top-down-location-pixel-art/Tiles_exterior.png" id="4_272cy"]
+[ext_resource type="Texture2D" uid="uid://cxj518rofwcnj" path="res://assets/tilesets/craftpix-net-160005-free-ruined-temple-top-down-location-pixel-art/Discoverer2_Idle_without_shadow.png" id="7_37iue"]
+[ext_resource type="Texture2D" uid="uid://cigaa7ssengfr" path="res://assets/backgrounds/temple_intro.jpg" id="9_t1qkj"]
+[ext_resource type="Script" uid="uid://cqcur1rm7433g" path="res://addons/dialogue_manager/nodes/actionable/dialogue_actionable_2d.gd" id="10_37iue"]
+[ext_resource type="Resource" uid="uid://dnrxkfirkbjys" path="res://dialogues/intro.dialogue" id="11_n6p8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37iue"]
 texture = ExtResource("2_bu1yb")
@@ -1190,16 +1193,8 @@ atlas = ExtResource("3_wfs7u")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3r7s"]
-atlas = ExtResource("2_4bx60")
+atlas = ExtResource("7_37iue")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwriy"]
-atlas = ExtResource("2_4bx60")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5myo"]
-atlas = ExtResource("2_4bx60")
-region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l5aub"]
 animations = [{
@@ -1229,12 +1224,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m3r7s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwriy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5myo")
 }],
 "loop": 1,
 "name": &"idle",
@@ -1245,60 +1234,250 @@ animations = [{
 atlas = ExtResource("2_yjqpq")
 region = Rect2(0, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2l1n"]
-atlas = ExtResource("2_yjqpq")
-region = Rect2(64, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wfs7u"]
-atlas = ExtResource("2_yjqpq")
-region = Rect2(128, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_es01l"]
-atlas = ExtResource("2_yjqpq")
-region = Rect2(192, 192, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_hb335"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4bx60")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i2l1n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wfs7u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_es01l")
 }],
 "loop": 1,
 "name": &"idle",
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_37iue"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-64.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Master:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [500.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Master:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(500, 128)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Master:flip_v")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Master:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Overlay:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n6p8m"]
+resource_name = "arrival"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-64.0, 75.0]
+}
+
+[sub_resource type="Animation" id="Animation_u05oh"]
+resource_name = "intro_end"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u5myo"]
+resource_name = "intro_start"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m3r7s"]
+resource_name = "master_arrival"
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Master:position:x")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [500.0, 250.0]
+}
+
+[sub_resource type="Animation" id="Animation_xwriy"]
+resource_name = "master_departure"
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Master:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(250, 128), Vector2(500, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("../Master:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Master:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m3r7s"]
+_data = {
+&"RESET": SubResource("Animation_37iue"),
+&"arrival": SubResource("Animation_n6p8m"),
+&"intro_end": SubResource("Animation_u05oh"),
+&"intro_start": SubResource("Animation_u5myo"),
+&"master_arrival": SubResource("Animation_m3r7s"),
+&"master_departure": SubResource("Animation_xwriy")
+}
+
 [node name="Intro" type="Node2D" unique_id=251447794]
 script = ExtResource("1_ioskq")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=536410210]
-tile_map_data = PackedByteArray("AAAGAAEAAQAAAAUAAAAGAAIAAQAAAAYAAAAGAAMAAQAAAAcAAAAHAAAAAQABAAQAAAAHAAEAAQABAAUAAAAHAAIAAQABAAYAAAAHAAMAAQABAAcAAAAHAAQAAQABAAgAAAAIAAAAAQACAAQAAAAIAAEAAQACAAUAAAAIAAIAAQACAAYAAAAIAAMAAQACAAcAAAAIAAQAAQACAAgAAAAJAAAAAQADAAQAAAAJAAEAAQADAAUAAAAJAAIAAQADAAYAAAAJAAMAAQADAAcAAAAJAAQAAQADAAgAAAAKAAAAAQAEAAQAAAAKAAEAAQAEAAUAAAAKAAIAAQAEAAYAAAAKAAMAAQAEAAcAAAAKAAQAAQAEAAgAAAALAAAAAQAFAAQAAAALAAEAAQAFAAUAAAALAAIAAQAFAAYAAAALAAMAAQAFAAcAAAALAAQAAQAFAAgAAAAMAAAAAQAGAAQAAAAMAAEAAQAGAAUAAAAMAAIAAQAGAAYAAAAMAAMAAQAGAAcAAAAMAAQAAQAGAAgAAAANAAAAAQAHAAQAAAANAAEAAQAHAAUAAAANAAIAAQAHAAYAAAANAAMAAQAHAAcAAAANAAQAAQAHAAgAAAAOAAAAAQAIAAQAAAAOAAEAAQAIAAUAAAAOAAIAAQAIAAYAAAAOAAMAAQAIAAcAAAAOAAQAAQAIAAgAAAAPAAAAAQAJAAQAAAAPAAEAAQAJAAUAAAAPAAIAAQAJAAYAAAAPAAMAAQAJAAcAAAAPAAQAAQAJAAgAAAAQAAEAAQAKAAUAAAAQAAQAAQAKAAgAAAAGAAcAAgAOAAYAAAAGAAgAAgAOAAcAAAAHAAcAAgAPAAYAAAAHAAgAAgAPAAcAAAAIAAcAAgAQAAYAAAAIAAgAAgAQAAcAAAAJAAcAAgAVAAUAAAAJAAgAAgAVAAYAAAAJAAkAAgAVAAcAAAAKAAcAAgAWAAUAAAAKAAgAAgAWAAYAAAAKAAkAAgAWAAcAAAALAAcAAgAXAAUAAAALAAgAAgAXAAYAAAALAAkAAgAXAAcAAAAMAAcAAgAYAAUAAAAMAAgAAgAYAAYAAAAMAAkAAgAYAAcAAAANAAcAAgAZAAUAAAANAAgAAgAZAAYAAAANAAkAAgAZAAcAAAAOAAcAAgAOAAYAAAAOAAgAAgAOAAcAAAAPAAcAAgAPAAYAAAAPAAgAAgAPAAcAAAAQAAcAAgAQAAYAAAAQAAgAAgAQAAcAAAAGAAUAAgACAAIAAAAGAAYAAgACAAIAAAAHAAUAAgACAAIAAAAHAAYAAgACAAIAAAAIAAUAAgACAAIAAAAIAAYAAgACAAIAAAAJAAUAAgACAAIAAAAJAAYAAgACAAIAAAAKAAUAAgACAAIAAAAKAAYAAgACAAIAAAALAAUAAgACAAIAAAALAAYAAgACAAIAAAAMAAUAAgACAAIAAAAMAAYAAgACAAIAAAANAAUAAgACAAIAAAANAAYAAgACAAIAAAAOAAUAAgACAAIAAAAOAAYAAgACAAIAAAAPAAUAAgACAAIAAAAPAAYAAgACAAIAAAAQAAUAAgACAAIAAAAQAAYAAgACAAIAAAA=")
+tile_map_data = PackedByteArray("AAAGAAsAAgACAAIAAAAGAAwAAgAOAAYAAAAHAAsAAgACAAIAAAAHAAwAAgAPAAYAAAAIAAsAAgACAAIAAAAIAAwAAgAQAAYAAAAJAAsAAgACAAIAAAAJAAwAAgAVAAUAAAAKAAsAAgACAAIAAAAKAAwAAgAWAAUAAAALAAsAAgACAAIAAAALAAwAAgAXAAUAAAAMAAsAAgACAAIAAAAMAAwAAgAYAAUAAAANAAsAAgACAAIAAAANAAwAAgAZAAUAAAAOAAsAAgACAAIAAAAOAAwAAgAOAAYAAAAPAAsAAgACAAIAAAAPAAwAAgAPAAYAAAAQAAsAAgACAAIAAAAQAAwAAgAQAAYAAAD7/wsAAgACAAIAAAD7/wwAAgAOAAYAAAD8/wsAAgACAAIAAAD8/wwAAgAPAAYAAAD9/wsAAgACAAIAAAD9/wwAAgAQAAYAAAD+/wsAAgACAAIAAAD+/wwAAgAVAAUAAAD//wsAAgACAAIAAAD//wwAAgAWAAUAAAAAAAsAAgACAAIAAAAAAAwAAgAXAAUAAAABAAsAAgACAAIAAAABAAwAAgAYAAUAAAACAAsAAgACAAIAAAACAAwAAgAZAAUAAAADAAsAAgACAAIAAAADAAwAAgAOAAYAAAAEAAsAAgACAAIAAAAEAAwAAgAPAAYAAAAFAAsAAgACAAIAAAAFAAwAAgAQAAYAAAARAAsAAgACAAIAAAARAAwAAgAOAAYAAAASAAsAAgACAAIAAAASAAwAAgAPAAYAAAATAAsAAgACAAIAAAATAAwAAgAQAAYAAAAUAAsAAgACAAIAAAAUAAwAAgAVAAUAAAAVAAsAAgACAAIAAAAVAAwAAgAWAAUAAAAWAAsAAgACAAIAAAAWAAwAAgAXAAUAAAAXAAsAAgACAAIAAAAXAAwAAgAYAAUAAAAYAAsAAgACAAIAAAAYAAwAAgAZAAUAAAAZAAsAAgACAAIAAAAZAAwAAgAOAAYAAAAaAAsAAgACAAIAAAAaAAwAAgAPAAYAAAAbAAsAAgACAAIAAAAbAAwAAgAQAAYAAAAcAAsAAgACAAIAAAAcAAwAAgAQAAYAAAAdAAsAAgACAAIAAAAdAAwAAgACAAIAAAAeAAsAAgACAAIAAAAeAAwAAgACAAIAAAAfAAsAAgACAAIAAAAfAAwAAgACAAIAAAAgAAsAAgACAAIAAAAgAAwAAgACAAIAAAAhAAsAAgACAAIAAAAhAAwAAgACAAIAAAAiAAsAAgACAAIAAAAiAAwAAgACAAIAAAAjAAsAAgACAAIAAAAjAAwAAgACAAIAAAAkAAsAAgACAAIAAAAkAAwAAgACAAIAAAAlAAsAAgACAAIAAAAlAAwAAgACAAIAAAAmAAsAAgACAAIAAAAmAAwAAgACAAIAAAAGAA0AAAADAAIAAAAHAA0AAAAEAAIAAAAIAA0AAAAFAAIAAAAJAA0AAgAVAAYAAAAJAA4AAgAVAAcAAAAKAA0AAgAWAAYAAAAKAA4AAgAWAAcAAAALAA0AAgAXAAYAAAALAA4AAgAXAAcAAAAMAA0AAgAYAAYAAAAMAA4AAgAYAAcAAAANAA0AAgAZAAYAAAANAA4AAgAZAAcAAAAOAA0AAAABAAIAAAAPAA0AAAACAAIAAAAQAA0AAAADAAIAAAARAA0AAAAEAAIAAAASAA0AAAAFAAIAAAATAA0AAAAEAAIAAAAUAA0AAAAFAAIAAAAVAA0AAAABAAIAAAAWAA0AAAACAAIAAAAXAA0AAAADAAIAAAAYAA0AAAAEAAIAAAAZAA0AAAAFAAIAAAADAA0AAAAFAAIAAAAEAA0AAAABAAIAAAAFAA0AAAACAAIAAAAAAA0AAAAFAAIAAAABAA0AAAADAAIAAAACAA0AAAAEAAIAAAD9/w0AAAACAAIAAAD+/w0AAAADAAIAAAD//w0AAAAEAAIAAAD8/w0AAAABAAIAAAA=")
 tile_set = SubResource("TileSet_hb335")
 
 [node name="Master" type="AnimatedSprite2D" parent="." unique_id=1209417593]
-position = Vector2(304, 112)
+position = Vector2(500, 128)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_l5aub")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.06327833
 
-[node name="Yeong-Gi" type="AnimatedSprite2D" parent="." unique_id=506699307]
-position = Vector2(48, 88)
-scale = Vector2(1.5, 1.5)
+[node name="YeongGi" type="AnimatedSprite2D" parent="." unique_id=506699307]
+position = Vector2(-64, 112)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hb335")
 animation = &"idle"
-autoplay = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=831363388]
+root_node = NodePath("../YeongGi")
+libraries/ = SubResource("AnimationLibrary_m3r7s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=64885607]
 anchor_mode = 0
 zoom = Vector2(3, 3)
+
+[node name="TempleIntroBackground" type="Sprite2D" parent="." unique_id=839881368]
+modulate = Color(0.50534403, 0.5053441, 0.50534403, 1)
+self_modulate = Color(0.66656864, 0.6665687, 0.66656864, 1)
+z_index = -1
+position = Vector2(192, 72)
+scale = Vector2(0.85861856, 0.66197145)
+texture = ExtResource("9_t1qkj")
+
+[node name="DialogueActionable2D" type="Area2D" parent="." unique_id=1892904797]
+script = ExtResource("10_37iue")
+dialogue_resource = ExtResource("11_n6p8m")
+dialogue_cue = "story"
+metadata/_custom_type_script = "uid://cqcur1rm7433g"
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=302328553]
+offset_right = 384.0
+offset_bottom = 216.0
+color = Color(0, 0, 0, 0)

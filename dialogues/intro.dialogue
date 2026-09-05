@@ -11,19 +11,23 @@ Nathan: For more information see the online documentation.
 => END
 
 ~ story
+do yeong_gi_appear()
 Once upon a time Yeong-Gi was a monk living in a buddhist monastery
 
-The monks there had to make vow of silence. Following the word from the Buddah itself...
+The monks there had to make vow of silence, following the word from the Buddah itself.
 
 But Yeong-Gi liked too much to speak.
 One day he got caught by the monastery master talking to a villager.
-
-Monastery Master: ... ... .....
+do master_appear()
+Monastery Master: ... ... ....
+do master_departs()
 Yeong-Gi was excluded from the other monks
 
 Enraged, he decided to go up to the TEN, heaven where Buddha resides and ask him to put an end to this stupid vow of silence
 
 But the way is long, protected by the 4 ShiTENno kings \: TamonTEN, JikokuTEN, ZochoTEN and KomokuTEN...
 
-Will Yeong-Gi show that the power of spoken words can lead him to Buddha ?
+Will Yeong-Gi succeed in his quest using the power of spoken words ?
+
+do end_intro()
 => END
