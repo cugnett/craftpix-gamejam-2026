@@ -95,6 +95,7 @@ label_settings = SubResource("LabelSettings_hb335")
 [node name="Player" parent="." unique_id=512779361 instance=ExtResource("2_wwpf4")]
 position = Vector2(200, 184)
 
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=384151323]
 stream = ExtResource("13_f31uk")
 volume_db = -14.922
@@ -105,6 +106,7 @@ position = Vector2(632, 168)
 
 [node name="SpellBook" parent="." unique_id=1274499003 instance=ExtResource("15_i8kv5")]
 position = Vector2(-304, 48)
+
 
 [connection signal="change_camera_pos_x" from="Player" to="." method="_on_player_change_camera_pos_x"]
 [connection signal="change_camera_pos_y" from="Player" to="." method="_on_player_change_camera_pos_y"]

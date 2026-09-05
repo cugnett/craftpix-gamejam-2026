@@ -1,10 +1,36 @@
 [gd_scene format=3 uid="uid://dy2rl25b6qpbw"]
 
+[ext_resource type="Script" uid="uid://bd47h1gpiy2qs" path="res://scripts/buff.gd" id="1_npcpg"]
+[ext_resource type="Script" uid="uid://cdvjksfcv5org" path="res://addons/dragonforge_curved_text/curved_text_2d.gd" id="2_ixfor"]
+[ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="3_kao04"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_aqqed"]
 
-[node name="Buff" type="Area2D" unique_id=1972616158]
+[sub_resource type="Curve2D" id="Curve2D_dhyru"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(2.63, -0.265, 12.3, 12.055, 15, -15, 2.63, -0.265, 12.3, 12.055, 15, 14)
+}
+point_count = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1524982170]
+[sub_resource type="LabelSettings" id="LabelSettings_aqqed"]
+font = ExtResource("3_kao04")
+font_size = 10
+
+[node name="Buff" type="Area2D" unique_id=1972616158]
+script = ExtResource("1_npcpg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=579655241]
 shape = SubResource("CircleShape2D_aqqed")
+
+[node name="CurvedText2D" type="Path2D" parent="." unique_id=560990598]
+position = Vector2(-4, -9.536743e-07)
+curve = SubResource("Curve2D_dhyru")
+script = ExtResource("2_ixfor")
+text = "Shield"
+label_settings = SubResource("LabelSettings_aqqed")
+metadata/_custom_type_script = "uid://cdvjksfcv5org"
+
+[node name="Timer" type="Timer" parent="." unique_id=2026046999]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

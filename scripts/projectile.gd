@@ -1,10 +1,15 @@
 extends Area2D
 
+@onready
+var TextLabel: RichTextLabel = $Control/TextLabel
+
 var direction: Vector2
 var weapon: WeaponRessource
 
 func _ready() -> void:
 	rotate(direction.angle())
+	TextLabel.push_color(weapon.text_color)
+	TextLabel.append_text(weapon.text)
 
 func _process(delta: float) -> void:
 	position += direction * weapon.speed * delta

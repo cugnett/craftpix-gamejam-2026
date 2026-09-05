@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponRessource" format=3 uid="uid://nc25kdm8clt3"]
 
+[ext_resource type="PackedScene" uid="uid://dy2rl25b6qpbw" path="res://scenes/buff.tscn" id="1_1c3pq"]
 [ext_resource type="Script" uid="uid://dv6bph588ihoy" path="res://scripts/weapon_ressource.gd" id="1_421i6"]
 
 [resource]
@@ -7,5 +8,8 @@ script = ExtResource("1_421i6")
 name = "shield"
 power = 3
 cooldown = 5.0
-type = 1
+particle_scene = ExtResource("1_1c3pq")
+type = 2
+text = "Shield"
+text_color = Color(0.039215688, 0.70980394, 0, 0.61960787)
 metadata/_custom_type_script = "uid://dv6bph588ihoy"
