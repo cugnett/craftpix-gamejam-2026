@@ -533,4 +533,7 @@ animation = &"idle_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sight" unique_id=625043035]
 shape = SubResource("CircleShape2D_hb335")
 
+[node name="FreezeTimer" type="Timer" parent="." unique_id=2125648386]
+
 [connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
+[connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]

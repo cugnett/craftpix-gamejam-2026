@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://blwkefuk13mgc" path="res://assets/characters/hero1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://ctp6jwq2blyek" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="PackedScene" uid="uid://djgcpadnguhnv" path="res://scenes/Weapon.tscn" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
@@ -287,4 +286,12 @@ animation = &"move_down"
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_g2els")
 
-[node name="Weapon" parent="." unique_id=1222061813 instance=ExtResource("3_qhqgy")]
+[node name="ExplosionTimer" type="Timer" parent="." unique_id=287409840]
+
+[node name="FreezeTimer" type="Timer" parent="." unique_id=30541735]
+
+[node name="ShieldTimer" type="Timer" parent="." unique_id=1491039117]
+
+[connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
+[connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]

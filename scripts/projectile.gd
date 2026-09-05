@@ -1,24 +1,21 @@
 extends Area2D
 
-const SPEED: int = 300
-const DAMAGE: int = 3
-
 var direction: Vector2
+var weapon: WeaponRessource
 
 func _ready() -> void:
 	rotate(direction.angle())
 
 func _process(delta: float) -> void:
-	position += direction * SPEED * delta
+	position += direction * weapon.speed * delta
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if(body.name != "Player"):
-		var explosion_fx = preload("res://scenes/Explosion.tscn")
+		var explosion_fx = weapon.particle_scene
 		var explosion = explosion_fx.instantiate()
-		explosion.animation_time = 0.5
 		explosion.global_position = global_position
 		get_parent().add_child(explosion)
 		queue_free()
 		if body.has_method("take_damage"):
-			body.take_damage(DAMAGE)
+			body.take_damage(weapon.power)

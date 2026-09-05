@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponRessource" format=3 uid="uid://c2ewjsfb57ewt"]
+
+[ext_resource type="PackedScene" uid="uid://x0orvq6dub" path="res://scenes/freeze.tscn" id="1_8uaku"]
+[ext_resource type="Script" uid="uid://dv6bph588ihoy" path="res://scripts/weapon_ressource.gd" id="1_arh1q"]
+[ext_resource type="Texture2D" uid="uid://dbf02dmw5dqme" path="res://assets/icons/magic-book/sell.png" id="3_agg3x"]
+
+[resource]
+script = ExtResource("1_arh1q")
+name = "freeze"
+texture = ExtResource("3_agg3x")
+speed = 100
+cooldown = 1.0
+particle_scene = ExtResource("1_8uaku")
+type = 1
+metadata/_custom_type_script = "uid://dv6bph588ihoy"

@@ -4,6 +4,7 @@ const SPEED = 100.0
 
 var health: int = 5
 var damage: int = 1
+var freezed: bool = false
 
 @onready
 var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -27,7 +28,8 @@ func _attack(delta: float) -> void:
 		direction = Vector2.ZERO
 	else:
 		direction = (target.position - position).normalized()
-		position += direction * SPEED * delta
+		if !freezed:
+			position += direction * SPEED * delta
 	
 	#get last direction orientation
 	if direction != Vector2.ZERO:
@@ -55,9 +57,18 @@ func _on_sight_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		target = body
 
-func take_damage(damage: int) -> void:
-	health -= damage
+func take_damage(taked_damage: int) -> void:
+	health -= taked_damage
 	# damage animation then :
 	if health <= 0:
 		# death animation then :
 		queue_free()
+
+func freeze(freeze_power: float) -> void:
+	freezed = true
+	$FreezeTimer.start(freeze_power)
+	#freeze sprite
+
+func _on_freeze_timer_timeout() -> void:
+	freezed = false
+	#normal sprite

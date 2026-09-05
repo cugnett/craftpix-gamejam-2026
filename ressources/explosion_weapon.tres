@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponRessource" format=3 uid="uid://dov5ol11elxmk"]
+
+[ext_resource type="PackedScene" uid="uid://wb2jwu3tsgyj" path="res://scenes/explosion.tscn" id="1_8avxf"]
+[ext_resource type="Script" uid="uid://dv6bph588ihoy" path="res://scripts/weapon_ressource.gd" id="1_78xfe"]
+[ext_resource type="Texture2D" uid="uid://dbf02dmw5dqme" path="res://assets/icons/magic-book/sell.png" id="3_8avxf"]
+
+[resource]
+script = ExtResource("1_78xfe")
+name = "explosion"
+texture = ExtResource("3_8avxf")
+power = 3
+speed = 200
+cooldown = 0.5
+particle_scene = ExtResource("1_8avxf")
+metadata/_custom_type_script = "uid://dv6bph588ihoy"
