@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 
-var health: int = 5
-var damage: int = 1
+var health: float = 5
+var damage: float = 1
 var freezed: bool = false
 
 @onready
@@ -57,8 +57,9 @@ func _on_sight_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		target = body
 
-func take_damage(taked_damage: int) -> void:
+func take_damage(taked_damage: float) -> void:
 	health -= taked_damage
+	print(health)
 	# damage animation then :
 	if health <= 0:
 		# death animation then :

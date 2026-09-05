@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_421i6")
 name = "shield"
-power = 3
+power = 3.0
 cooldown = 5.0
 particle_scene = ExtResource("1_1c3pq")
 type = 2

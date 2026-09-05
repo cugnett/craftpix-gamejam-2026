@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_78xfe")
 name = "explosion"
+power = 3.0
 speed = 200
 cooldown = 0.5
 particle_scene = ExtResource("1_8avxf")
