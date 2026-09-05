@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://wb2jwu3tsgyj"]
+
+[ext_resource type="Texture2D" uid="uid://bcq1ore8p2rt" path="res://assets/particles/dirt_01_a.png" id="1_6o7x5"]
+[ext_resource type="Script" uid="uid://da0etxclsg32n" path="res://scripts/explosion.gd" id="1_i4n8h"]
+
+[sub_resource type="Gradient" id="Gradient_i4n8h"]
+offsets = PackedFloat32Array(0, 0.11792453, 0.3726415, 0.8003145, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0.2, 1, 1, 0.5, 0, 1, 0.8, 0.1, 0, 1, 0.2, 0, 0, 0)
+
+[node name="Explosion" type="Node2D" unique_id=256078248]
+script = ExtResource("1_i4n8h")
+
+[node name="ExplosionFX" type="CPUParticles2D" parent="." unique_id=1028680143]
+amount = 100
+texture = ExtResource("1_6o7x5")
+lifetime_randomness = 0.3
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+scale_amount_min = 0.02
+scale_amount_max = 0.06
+color_ramp = SubResource("Gradient_i4n8h")
+
+[node name="Timer" type="Timer" parent="." unique_id=519777637]
+one_shot = true
+
+[connection signal="finished" from="ExplosionFX" to="." method="_on_explosion_fx_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

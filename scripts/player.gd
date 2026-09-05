@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 200.0
 
 var last_direction: Vector2 = Vector2.RIGHT
 
@@ -19,7 +19,11 @@ signal change_camera_pos_x
 
 func _physics_process(_delta: float) -> void:	
 	if Input.is_action_just_pressed("attack1") and Weapon.is_ready:
-		Weapon.shoot(last_direction)
+		Weapon.shoot(last_direction, "attack1")
+	elif Input.is_action_just_pressed("attack2") and Weapon.is_ready:
+		Weapon.shoot(last_direction, "attack2")
+	elif Input.is_action_just_pressed("attack3") and Weapon.is_ready:
+		Weapon.shoot(last_direction, "attack3")
 
 	_process_movement()
 	_process_animation()

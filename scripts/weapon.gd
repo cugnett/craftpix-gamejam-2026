@@ -8,7 +8,7 @@ var Level: Node2D = $".".get_parent().get_parent()
 func _process(_delta: float) -> void:
 	pass
 
-func shoot(direction: Vector2) -> void:
+func shoot(direction: Vector2, attack_input: String) -> void:
 	is_ready = false
 	$Cooldown.start()
 	const PROJECTILE = preload("res://scenes/Projectile.tscn")
