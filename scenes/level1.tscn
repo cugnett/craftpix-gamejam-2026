@@ -35,9 +35,6 @@ collision_enabled = false
 anchor_mode = 0
 zoom = Vector2(2.531, 2.531)
 
-[node name="Player" parent="." unique_id=512779361 instance=ExtResource("2_wwpf4")]
-position = Vector2(200, 184)
-
 [node name="EnemySpawner" parent="." unique_id=219710564 instance=ExtResource("5_ru4tf")]
 spawner_map_position = Vector2(0, 1)
 
@@ -91,6 +88,9 @@ offset_right = 207.0
 offset_bottom = 119.0
 text = "Speak"
 label_settings = SubResource("LabelSettings_hb335")
+
+[node name="Player" parent="." unique_id=512779361 instance=ExtResource("2_wwpf4")]
+position = Vector2(200, 184)
 
 [connection signal="change_camera_pos_x" from="Player" to="." method="_on_player_change_camera_pos_x"]
 [connection signal="change_camera_pos_y" from="Player" to="." method="_on_player_change_camera_pos_y"]

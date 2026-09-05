@@ -8,13 +8,14 @@ enum weapon_type {
 }
 
 @export var name: String
-@export var texture: Texture2D
 @export var power: float
 @export var speed: int
 @export var cooldown: float
 @export var is_ready: bool = true
 @export var particle_scene: PackedScene
 @export var type: weapon_type
+@export var text: String
+@export var text_color: Color
 
 func upgrade_power(added_power: int):
 	power += added_power

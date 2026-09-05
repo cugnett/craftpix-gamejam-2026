@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://c0k8aas6ujcoy"]
 
 [node name="Shield" type="Node2D" unique_id=537266792]
+
+[node name="ShieldFX" type="CPUParticles2D" parent="." unique_id=1116112794]
+
+[node name="Timer" type="Timer" parent="." unique_id=971385844]

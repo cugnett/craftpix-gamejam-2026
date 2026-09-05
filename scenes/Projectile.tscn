@@ -1,22 +1,47 @@
 [gd_scene format=3 uid="uid://dxaawn7h3q7s8"]
 
 [ext_resource type="Script" uid="uid://dmqq8ydwmucc" path="res://scripts/projectile.gd" id="1_dprbf"]
-[ext_resource type="Texture2D" uid="uid://dbf02dmw5dqme" path="res://assets/icons/magic-book/sell.png" id="2_vihyi"]
+[ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="2_q3m7n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqqed"]
 radius = 11.0
-height = 34.0
+height = 52.0
 
 [node name="Projectile" type="Area2D" unique_id=2094010726]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_dprbf")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1260589885]
-texture = ExtResource("2_vihyi")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1553400777]
+position = Vector2(28, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_aqqed")
+
+[node name="Control" type="Control" parent="." unique_id=792125910]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextLabel" type="RichTextLabel" parent="Control" unique_id=1927443513]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -5.0
+offset_right = 63.0
+offset_bottom = 5.0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_q3m7n")
+theme_override_fonts/bold_font = ExtResource("2_q3m7n")
+theme_override_fonts/bold_italics_font = ExtResource("2_q3m7n")
+theme_override_fonts/italics_font = ExtResource("2_q3m7n")
+theme_override_fonts/mono_font = ExtResource("2_q3m7n")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+bbcode_enabled = true
+fit_content = true
+vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

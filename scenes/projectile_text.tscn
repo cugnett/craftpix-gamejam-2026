@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b2il6t014vnp"]
+
+[ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="1_gmxg2"]
+[ext_resource type="Script" uid="uid://dy6h3eojopeld" path="res://scripts/projectile_text.gd" id="1_rimde"]
+
+[node name="ProjectileText" type="Control" unique_id=1156688254]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rimde")
+
+[node name="TextLabel" type="RichTextLabel" parent="." unique_id=105140500]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -19.0
+offset_right = 105.0
+offset_bottom = 18.0
+theme_override_fonts/normal_font = ExtResource("1_gmxg2")
+theme_override_fonts/bold_font = ExtResource("1_gmxg2")
+theme_override_fonts/bold_italics_font = ExtResource("1_gmxg2")
+theme_override_fonts/italics_font = ExtResource("1_gmxg2")
+theme_override_fonts/mono_font = ExtResource("1_gmxg2")
+bbcode_enabled = true
+vertical_alignment = 1
