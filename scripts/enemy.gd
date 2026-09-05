@@ -12,6 +12,7 @@ var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var last_direction: Vector2 = Vector2.DOWN
 var target = null
 
+
 func _physics_process(_delta: float) -> void:
 	
 	_process_animation()

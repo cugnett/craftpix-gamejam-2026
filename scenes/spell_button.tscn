@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://b3neskmwbfpft"]
+
+[ext_resource type="Script" uid="uid://rys35w76rhvx" path="res://scripts/spell_button.gd" id="1_w2jb8"]
+[ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="2_3ts4b"]
+
+[sub_resource type="Gradient" id="Gradient_3ts4b"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.39215687)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wmh4t"]
+gradient = SubResource("Gradient_3ts4b")
+
+[sub_resource type="Gradient" id="Gradient_w2jb8"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.19607843)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n86o1"]
+gradient = SubResource("Gradient_w2jb8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6u0ko"]
+font = ExtResource("2_3ts4b")
+font_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SpellButton" type="TextureButton" unique_id=1463707210]
+offset_right = 105.31201
+offset_bottom = 17.723999
+texture_pressed = SubResource("GradientTexture1D_wmh4t")
+texture_hover = SubResource("GradientTexture1D_n86o1")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_w2jb8")
+
+[node name="Label" type="Label" parent="." unique_id=788850924]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -9.5
+offset_right = 43.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Explosion"
+label_settings = SubResource("LabelSettings_6u0ko")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
