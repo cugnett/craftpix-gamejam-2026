@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cigaa7ssengfr" path="res://assets/backgrounds/temple_intro.jpg" id="9_t1qkj"]
 [ext_resource type="Script" uid="uid://cqcur1rm7433g" path="res://addons/dialogue_manager/nodes/actionable/dialogue_actionable_2d.gd" id="10_37iue"]
 [ext_resource type="Resource" uid="uid://dnrxkfirkbjys" path="res://dialogues/intro.dialogue" id="11_n6p8m"]
+[ext_resource type="AudioStream" uid="uid://ces8o52p6cm5l" path="res://assets/musics/Asian-Travel.mp3" id="12_n6p8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37iue"]
 texture = ExtResource("2_bu1yb")
@@ -1481,3 +1482,7 @@ metadata/_custom_type_script = "uid://cqcur1rm7433g"
 offset_right = 384.0
 offset_bottom = 216.0
 color = Color(0, 0, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1628863282]
+stream = ExtResource("12_n6p8m")
+autoplay = true
