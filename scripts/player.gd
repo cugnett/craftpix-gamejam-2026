@@ -23,6 +23,9 @@ var enemy_collision : Node2D # check if ennemy is colliding with player
 @onready var Level: Node2D = $".".get_parent()
 @onready var effects = $Effects
 @onready var playerWalkAudioStream = $AudioStreamPlayerWalk
+@onready var playerHitAudioStream = $AudioStreamPlayerHit
+@onready var playerShieldHitAudioStream = $AudioStreamPlayerShieldHit
+@onready var playerShieldBreakAudioStream = $AudioStreamPlayerShieldBreak
 
 @export var camera_height: int = 256
 @export var camera_width: int = 464
@@ -180,6 +183,7 @@ func take_damage(taked_damage: float):
 		invincible = true
 		health -= damage_taken
 		if damage_taken > 0:
+			playerHitAudioStream.play()
 			health_changed.emit(-damage_taken)
 			effects.play("hurtBlink")
 		else:
@@ -192,8 +196,11 @@ func take_damage(taked_damage: float):
 			if shield <= 0:
 				shield = 0
 				if new_buff:
+					playerShieldBreakAudioStream.play()
 					$ShieldTimer.start(weapons["shield"].cooldown)
 					new_buff.queue_free()
+			else:
+				playerShieldHitAudioStream.play()
 		
 	if health <= 0:
 		#death

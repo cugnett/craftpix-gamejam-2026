@@ -515,7 +515,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hb335"]
 resource_local_to_scene = true
-radius = 80.0
+radius = 111.040535
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb335"]
 
