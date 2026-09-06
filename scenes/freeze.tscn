@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://xmvtadcwj0qi" path="res://assets/particles/fire_01_a.png" id="1_g2jp4"]
 [ext_resource type="Script" uid="uid://c5n30yttfgq6t" path="res://scripts/freeze.gd" id="1_j7yc7"]
 [ext_resource type="Gradient" uid="uid://bjmcjebscfnk4" path="res://assets/colors/freeze_gradient.tres" id="2_wicxs"]
+[ext_resource type="AudioStream" uid="uid://dfhg2rgu48di6" path="res://assets/sfx/Ice Freeze 1.wav" id="4_ql0iy"]
 
 [node name="Freeze" type="Node2D" unique_id=1515835318]
 script = ExtResource("1_j7yc7")
@@ -22,6 +23,9 @@ color_ramp = ExtResource("2_wicxs")
 
 [node name="Timer" type="Timer" parent="." unique_id=7953428]
 one_shot = true
+
+[node name="FreezeSound" type="AudioStreamPlayer" parent="." unique_id=1501076646]
+stream = ExtResource("4_ql0iy")
 
 [connection signal="finished" from="FreezeFX" to="." method="_on_freeze_fx_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

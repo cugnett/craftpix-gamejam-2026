@@ -22,6 +22,7 @@ var enemy_collision : Node2D # check if ennemy is colliding with player
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var Level: Node2D = $".".get_parent()
 @onready var effects = $Effects
+@onready var playerWalkAudioStream = $AudioStreamPlayerWalk
 
 @export var camera_height: int = 256
 @export var camera_width: int = 464
@@ -78,9 +79,10 @@ func _process_movement() -> void:
 func _process_animation() -> void:
 	if velocity != Vector2.ZERO:
 		_play_animation("move", last_direction)
+		_play_walk_sound()
 	else:
 		_play_animation("idle", last_direction)
-
+		_stop_walk_sound()
 
 func _play_animation(prefix: String, dir: Vector2) -> void:
 	if dir.x < 0:
@@ -92,6 +94,13 @@ func _play_animation(prefix: String, dir: Vector2) -> void:
 	else :
 		animated_sprite_2d.play(prefix + "_down")
 
+func _play_walk_sound() -> void:
+	if !playerWalkAudioStream.playing:
+		playerWalkAudioStream.play()
+
+func _stop_walk_sound() -> void:
+	playerWalkAudioStream.stop()
+	
 func move_camera_to_match_player_pos():
 	if position.y < camera_limit_upper - 10:
 		camera_limit_lower -= camera_height

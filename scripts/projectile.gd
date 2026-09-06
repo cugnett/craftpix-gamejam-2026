@@ -7,6 +7,10 @@ var direction: Vector2
 var weapon: WeaponRessource
 
 func _ready() -> void:
+	# play projectile launch sound
+	$ProjectileSound.stream = weapon.launch_sound
+	$ProjectileSound.play()
+				
 	rotate(direction.angle())
 	TextLabel.push_color(weapon.text_color)
 	TextLabel.append_text(weapon.text)

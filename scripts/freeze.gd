@@ -3,6 +3,7 @@ extends Node2D
 var animation_time: float = 0.5
 
 func _ready() -> void:
+	$FreezeSound.play()
 	$FreezeFX.emitting = true
 	$Timer.start(animation_time)
 

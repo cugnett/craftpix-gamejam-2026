@@ -16,6 +16,7 @@ enum weapon_type {
 @export var type: weapon_type
 @export var text: String
 @export var text_color: Color
+@export var launch_sound: AudioStream
 
 func upgrade_power(added_power: float):
 	power += added_power

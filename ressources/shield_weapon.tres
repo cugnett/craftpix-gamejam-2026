@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dy2rl25b6qpbw" path="res://scenes/buff.tscn" id="1_1c3pq"]
 [ext_resource type="Script" uid="uid://dv6bph588ihoy" path="res://scripts/weapon_ressource.gd" id="1_421i6"]
+[ext_resource type="AudioStream" uid="uid://dc0dnnnjmgiud" path="res://assets/sfx/shield.mp3" id="1_rib8y"]
 
 [resource]
 script = ExtResource("1_421i6")
@@ -12,4 +13,5 @@ particle_scene = ExtResource("1_1c3pq")
 type = 2
 text = "Shield"
 text_color = Color(0.039215688, 0.70980394, 0, 0.61960787)
+launch_sound = ExtResource("1_rib8y")
 metadata/_custom_type_script = "uid://dv6bph588ihoy"

@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://dl66v24vxgdpn"]
 
 [ext_resource type="Script" uid="uid://dmtly1tqmgtnq" path="res://scripts/enemy_spawner.gd" id="1_ks1gq"]
+[ext_resource type="AudioStream" uid="uid://bqygisooxngax" path="res://assets/sfx/door_close.mp3" id="2_devoi"]
+[ext_resource type="AudioStream" uid="uid://dgelsc1v10r18" path="res://assets/sfx/door_open.mp3" id="3_xl0gr"]
 
 [node name="EnemySpawner" type="Node2D" unique_id=724884831]
 script = ExtResource("1_ks1gq")
+
+[node name="DoorClose" type="AudioStreamPlayer" parent="." unique_id=846510051]
+stream = ExtResource("2_devoi")
+
+[node name="DoorOpen" type="AudioStreamPlayer" parent="." unique_id=647164740]
+stream = ExtResource("3_xl0gr")

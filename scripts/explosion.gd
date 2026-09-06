@@ -3,6 +3,7 @@ extends Node2D
 var animation_time: float = 0.5
 
 func _ready() -> void:
+	$ExplosionSound.play()
 	$ExplosionFX.emitting = true
 	$Timer.start(animation_time)
 

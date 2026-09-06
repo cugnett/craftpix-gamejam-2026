@@ -43,4 +43,6 @@ bbcode_enabled = true
 fit_content = true
 vertical_alignment = 1
 
+[node name="ProjectileSound" type="AudioStreamPlayer" parent="." unique_id=418136391]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

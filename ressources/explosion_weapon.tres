@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wb2jwu3tsgyj" path="res://scenes/Explosion.tscn" id="1_8avxf"]
 [ext_resource type="Script" uid="uid://dv6bph588ihoy" path="res://scripts/weapon_ressource.gd" id="1_78xfe"]
+[ext_resource type="AudioStream" uid="uid://d1231s0yd4oiv" path="res://assets/sfx/explosion.mp3" id="1_kekpy"]
 
 [resource]
 script = ExtResource("1_78xfe")
@@ -12,4 +13,5 @@ cooldown = 0.5
 particle_scene = ExtResource("1_8avxf")
 text = "[shake]Explosion[/shake]"
 text_color = Color(0.74509805, 0.23137255, 0.11764706, 1)
+launch_sound = ExtResource("1_kekpy")
 metadata/_custom_type_script = "uid://dv6bph588ihoy"

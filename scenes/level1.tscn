@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bs2x1ofqd1s1d" path="res://assets/tilesets/Pixelart_Keyboard_Version_2/IndividualKeys/CurvedPressed/Black/188.png" id="11_14jow"]
 [ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="12_2ku1j"]
 [ext_resource type="AudioStream" uid="uid://ctv10qltbx1kw" path="res://assets/musics/Schizo.mp3" id="13_f31uk"]
-[ext_resource type="PackedScene" uid="uid://dnqy34c2q3lff" path="res://scenes/book_sheet.tscn" id="14_gnai3"]
 [ext_resource type="PackedScene" uid="uid://bl56iicenlnb6" path="res://scenes/spellbook.tscn" id="15_i8kv5"]
 [ext_resource type="Script" uid="uid://b12pgrb1o1v62" path="res://scripts/level_ui.gd" id="16_dxn3v"]
+[ext_resource type="AudioStream" uid="uid://cplm3fq1dexc3" path="res://assets/musics/Acid-Trips.mp3" id="17_14jow"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hb335"]
 font = ExtResource("12_2ku1j")
@@ -100,16 +100,17 @@ label_settings = SubResource("LabelSettings_hb335")
 position = Vector2(200, 184)
 player_map_position = Vector2(0, 0)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=384151323]
+[node name="AudioStreamBackground" type="AudioStreamPlayer" parent="." unique_id=384151323]
 stream = ExtResource("13_f31uk")
 volume_db = -14.922
 autoplay = true
 
-[node name="BookSheet" parent="." unique_id=214749353 instance=ExtResource("14_gnai3")]
-position = Vector2(632, 168)
-
 [node name="SpellBook" parent="." unique_id=1274499003 instance=ExtResource("15_i8kv5")]
 position = Vector2(-304, 48)
+
+[node name="AudioStreamFight" type="AudioStreamPlayer2D" parent="." unique_id=761618641]
+stream = ExtResource("17_14jow")
+bus = &"Music"
 
 [connection signal="change_camera_pos_x" from="Player" to="." method="_on_player_change_camera_pos_x"]
 [connection signal="change_camera_pos_y" from="Player" to="." method="_on_player_change_camera_pos_y"]

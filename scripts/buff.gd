@@ -9,6 +9,8 @@ var direction: Vector2
 var weapon: WeaponRessource
 
 func _ready() -> void:
+	$BuffSound.stream = weapon.launch_sound
+	$BuffSound.play()
 	Text.label_settings.set_font_color(weapon.text_color)
 	Text.text = weapon.text
 

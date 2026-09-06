@@ -15,6 +15,7 @@ var instance_barrier
 var book_sheet_instance
 
 var current_player_map_position: Vector2
+var background_music_position: float # position in background music
 
 var room_activated = false
 var enemy_nb = 0
@@ -29,6 +30,7 @@ func _process(_delta: float) -> void:
 	# Open room if all enemies have been killed
 	if room_activated and enemy_nb == 0:
 		print("Victory!")
+		_stop_fight_music()
 		instance_barrier.queue_free()
 		room_activated = false
 		for i in randi_range(1,1):
@@ -46,6 +48,7 @@ func _process(_delta: float) -> void:
 
 func _activate_spawner(player_map_position: Vector2, player_position: Vector2) -> void:
 	print("player pos" + str(player_map_position))
+	_start_fight_music()
 	for i in randi_range(1,4):
 		instance = enemy.instantiate()
 		enemy_nb += 1
@@ -61,6 +64,7 @@ func _activate_spawner(player_map_position: Vector2, player_position: Vector2) -
 	print("barrier pos" + str(instance_barrier.position))
 	get_parent().add_child(instance_barrier)
 	print(enemy_nb)
+	
 
 func _on_player_player_is_in_room(player_map_position, player_position) -> void:
 	print("ACTIVATE!")
@@ -72,3 +76,19 @@ func _on_player_player_is_in_room(player_map_position, player_position) -> void:
 func on_enemy_exited():
 	enemy_nb -= 1
 	print("enemy_nb :" + str(enemy_nb))
+	
+func _start_fight_music():
+	# stop background
+	background_music_position = get_parent().get_node("AudioStreamBackground").get_playback_position()
+	get_parent().get_node("AudioStreamBackground").stop()
+	#play door closed and wait 1 sec
+	$DoorClose.play()
+	await get_tree().create_timer(1).timeout
+	# start fight music
+	get_parent().get_node("AudioStreamFight").play()
+
+func _stop_fight_music():
+	get_parent().get_node("AudioStreamFight").stop()
+	$DoorOpen.play()
+	await get_tree().create_timer(1).timeout
+	get_parent().get_node("AudioStreamBackground").play(background_music_position)
