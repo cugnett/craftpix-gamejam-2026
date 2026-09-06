@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 
 
 func _on_book_sheet_booksheet_collected() -> void:
+	get_parent().get_node("Player").can_move = false
 	print("Collected!")
 	#Set spell book position
 	var player_position = get_parent().get_node("Player").player_map_position
@@ -53,6 +54,7 @@ func close_book():
 	$SpellBookSprite.play("close")
 	await $SpellBookSprite.animation_finished
 	position = initial_position
+	get_parent().get_node("Player").can_move = true
 
 func display_upgrade(spell_name: String, stat_upgraded: String, current_stat: String, multiplier: String) -> void:
 	if stat_upgraded == "Cooldown":

@@ -9,7 +9,7 @@ var weapons: Dictionary = {
 	"freeze": preload("res://ressources/freeze_weapon.tres"),
 	"shield": preload("res://ressources/shield_weapon.tres"),
 }
-
+var can_move: bool = true
 var new_buff # to contain the active buff instance
 var shield = 0 # player shield
 var invincible = false #to make player invincible after taking damage
@@ -50,8 +50,9 @@ func _physics_process(_delta: float) -> void:
 		shoot(last_direction, weapons["freeze"])
 	elif Input.is_action_just_pressed("shield") and weapons["shield"].is_ready:
 		shoot(last_direction, weapons["shield"])
-
-	_process_movement()
+	
+	if can_move:
+		_process_movement()
 	_process_animation()
 	_process_collisions()
 	move_and_slide()

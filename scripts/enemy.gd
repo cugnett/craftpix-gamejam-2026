@@ -5,6 +5,7 @@ const SPEED = 100.0
 var health: float = 5
 var damage: float = 1
 var freezed: bool = false
+var is_frozen: bool = false
 
 @onready
 var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -16,11 +17,11 @@ var target = null
 
 
 func _physics_process(_delta: float) -> void:
-	
-	_process_animation()
-	if target:	
-		_attack(_delta)
-		move_and_slide()
+	if !is_frozen:
+		_process_animation()
+		if target:	
+			_attack(_delta)
+			move_and_slide()
 
 
 
@@ -68,6 +69,13 @@ func take_damage(taked_damage: float) -> void:
 	if health <= 0:
 		# death animation then :
 		queue_free()
+		
+func frozen(freeze_power: float) -> void:
+	is_frozen = true
+	animated_sprite_2d.self_modulate = Color("1470acff")
+	await get_tree().create_timer(freeze_power).timeout
+	animated_sprite_2d.self_modulate = Color("#ffffffff")
+	is_frozen = false
 
 func freeze(freeze_power: float) -> void:
 	freezed = true

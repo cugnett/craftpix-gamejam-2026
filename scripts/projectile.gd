@@ -22,5 +22,10 @@ func _on_body_entered(body: Node2D) -> void:
 		explosion.global_position = global_position
 		get_parent().add_child(explosion)
 		queue_free()
-		if body.has_method("take_damage"):
-			body.take_damage(weapon.power)
+		match weapon.name:
+			"explosion":
+				if body.has_method("take_damage"):
+					body.take_damage(weapon.power)
+			"freeze":
+				if body.has_method("frozen"):
+					body.frozen(weapon.power)
