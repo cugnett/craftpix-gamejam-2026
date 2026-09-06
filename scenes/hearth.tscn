@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bwbw537651b18"]
+
+[ext_resource type="Texture2D" uid="uid://cwktju4fb0yne" path="res://assets/icons/heart_spritesheet_16x16.png" id="1_ct6xp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb335"]
+atlas = ExtResource("1_ct6xp")
+region = Rect2(1.0354443, 1.9571245, 14.019275, 12.093346)
+
+[node name="Hearth" type="Node2D" unique_id=1785710827]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1988345812]
+texture = SubResource("AtlasTexture_hb335")

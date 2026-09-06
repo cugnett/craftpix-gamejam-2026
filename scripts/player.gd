@@ -37,6 +37,7 @@ var enemy_collision : Node2D # check if ennemy is colliding with player
 signal change_camera_pos_y
 signal change_camera_pos_x
 signal player_is_in_room
+signal health_changed
 
 #func _ready() -> void:
 #	effects.play("RESET")
@@ -169,6 +170,7 @@ func take_damage(taked_damage: float):
 		invincible = true
 		health -= damage_taken
 		if damage_taken > 0:
+			health_changed.emit(-damage_taken)
 			effects.play("hurtBlink")
 		else:
 			effects.play("shieldBlink")

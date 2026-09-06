@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dc66vajpp48h2" path="res://assets/tilesets/level1_tileset.tres" id="1_g2h75"]
 [ext_resource type="Script" uid="uid://bns28ba4k5dny" path="res://scripts/level.gd" id="1_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://djb6ajxxhfro2" path="res://scenes/player.tscn" id="2_wwpf4"]
+[ext_resource type="Texture2D" uid="uid://dbf02dmw5dqme" path="res://assets/icons/magic-book/sell.png" id="4_14jow"]
 [ext_resource type="PackedScene" uid="uid://dl66v24vxgdpn" path="res://scenes/enemy_spawner.tscn" id="5_ru4tf"]
 [ext_resource type="Texture2D" uid="uid://c571ikhjs8aj2" path="res://assets/tilesets/Pixelart_Keyboard_Version_2/IndividualKeys/CurvedPressed/Black/139.png" id="5_u3awl"]
 [ext_resource type="Texture2D" uid="uid://cwei5v7nutkk6" path="res://assets/tilesets/Pixelart_Keyboard_Version_2/IndividualKeys/CurvedPressed/Black/145.png" id="6_2ku1j"]
@@ -15,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://ctv10qltbx1kw" path="res://assets/musics/Schizo.mp3" id="13_f31uk"]
 [ext_resource type="PackedScene" uid="uid://dnqy34c2q3lff" path="res://scenes/book_sheet.tscn" id="14_gnai3"]
 [ext_resource type="PackedScene" uid="uid://bl56iicenlnb6" path="res://scenes/spellbook.tscn" id="15_i8kv5"]
+[ext_resource type="Script" uid="uid://b12pgrb1o1v62" path="res://scripts/level_ui.gd" id="16_dxn3v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hb335"]
 font = ExtResource("12_2ku1j")
@@ -37,6 +39,13 @@ collision_enabled = false
 [node name="Camera2D" type="Camera2D" parent="." unique_id=740806278]
 anchor_mode = 0
 zoom = Vector2(2.531, 2.531)
+
+[node name="HearthUI" type="CanvasLayer" parent="." unique_id=1063301719]
+script = ExtResource("16_dxn3v")
+
+[node name="Sprite2D" type="Sprite2D" parent="HearthUI" unique_id=2086341365]
+position = Vector2(96, 72)
+texture = ExtResource("4_14jow")
 
 [node name="EnemySpawner" parent="." unique_id=219710564 instance=ExtResource("5_ru4tf")]
 spawner_map_position = Vector2(0, 1)
@@ -110,3 +119,4 @@ position = Vector2(-304, 48)
 [connection signal="change_camera_pos_x" from="Player" to="." method="_on_player_change_camera_pos_x"]
 [connection signal="change_camera_pos_y" from="Player" to="." method="_on_player_change_camera_pos_y"]
 [connection signal="player_is_in_room" from="Player" to="EnemySpawner" method="_on_player_player_is_in_room"]
+[connection signal="player_is_in_room" from="Player" to="HearthUI" method="_on_player_player_is_in_room"]
