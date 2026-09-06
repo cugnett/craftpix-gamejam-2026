@@ -32,5 +32,6 @@ label_settings = SubResource("LabelSettings_aqqed")
 metadata/_custom_type_script = "uid://cdvjksfcv5org"
 
 [node name="Timer" type="Timer" parent="." unique_id=2026046999]
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -9,8 +9,10 @@ var freezed: bool = false
 @onready
 var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+
 var last_direction: Vector2 = Vector2.DOWN
 var target = null
+
 
 
 func _physics_process(_delta: float) -> void:
@@ -59,6 +61,7 @@ func _on_sight_body_entered(body: Node2D) -> void:
 		target = body
 
 func take_damage(taked_damage: float) -> void:
+	print("Enemy take damage")
 	health -= taked_damage
 	print(health)
 	# damage animation then :

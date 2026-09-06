@@ -28,7 +28,7 @@ func randomize_upgrade():
 			upgrade_multiplier = snapped(base_upgrade_multiplier * 2 + 1, 0.1)
 		1:
 			stat_upgraded = "Cooldown"
-			upgrade_multiplier = snapped(base_upgrade_multiplier / 8, 0.1) + 0.1
+			upgrade_multiplier = snapped(base_upgrade_multiplier / 5, 0.1) + 0.1
 		2:
 			stat_upgraded = "Speed"
 			upgrade_multiplier = snapped(base_upgrade_multiplier * 10 + 10, 0.1)
