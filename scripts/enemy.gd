@@ -63,6 +63,7 @@ func _on_sight_body_entered(body: Node2D) -> void:
 func take_damage(taked_damage: float) -> void:
 	print("Enemy take damage")
 	health -= taked_damage
+	print(health)
 	# damage animation then :
 	if health <= 0:
 		# death animation then :

@@ -43,7 +43,6 @@ offset_right = 43.5
 offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Explosion"
 label_settings = SubResource("LabelSettings_6u0ko")
 horizontal_alignment = 1
 vertical_alignment = 1

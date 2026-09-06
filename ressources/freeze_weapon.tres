@@ -7,7 +7,7 @@
 script = ExtResource("1_arh1q")
 name = "freeze"
 power = 1.0
-speed = 100
+speed = 80.0
 cooldown = 1.0
 particle_scene = ExtResource("1_8uaku")
 type = 1
