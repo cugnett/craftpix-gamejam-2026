@@ -30,3 +30,9 @@ func test():
 
 func end_intro():
 	ChangeScene.change_scene(ChangeScene.game_scene)
+	
+func speak_start() -> void:
+	$Speak.play()
+
+func speak_stop() -> void:
+	$Speak.stop()

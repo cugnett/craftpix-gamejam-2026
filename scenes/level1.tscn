@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bl56iicenlnb6" path="res://scenes/spellbook.tscn" id="15_i8kv5"]
 [ext_resource type="Script" uid="uid://b12pgrb1o1v62" path="res://scripts/level_ui.gd" id="16_dxn3v"]
 [ext_resource type="AudioStream" uid="uid://cplm3fq1dexc3" path="res://assets/musics/Acid-Trips.mp3" id="17_14jow"]
+[ext_resource type="Texture2D" uid="uid://ds0n46tbd0ymk" path="res://assets/characters/jikokuten.png" id="17_mvsps"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hb335"]
 font = ExtResource("12_2ku1j")
@@ -110,6 +111,11 @@ position = Vector2(-304, 48)
 [node name="AudioStreamFight" type="AudioStreamPlayer2D" parent="." unique_id=761618641]
 stream = ExtResource("17_14jow")
 bus = &"Music"
+
+[node name="Jikokuten" type="Sprite2D" parent="." unique_id=256708606]
+position = Vector2(352.00003, 136)
+scale = Vector2(0.5816327, 0.58)
+texture = ExtResource("17_mvsps")
 
 [connection signal="change_camera_pos_x" from="Player" to="." method="_on_player_change_camera_pos_x"]
 [connection signal="change_camera_pos_y" from="Player" to="." method="_on_player_change_camera_pos_y"]

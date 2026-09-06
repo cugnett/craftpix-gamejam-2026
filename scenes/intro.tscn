@@ -1473,6 +1473,7 @@ scale = Vector2(0.85861856, 0.66197145)
 texture = ExtResource("9_t1qkj")
 
 [node name="DialogueActionable2D" type="Area2D" parent="." unique_id=1892904797]
+audio_bus_name = &"Sfx"
 script = ExtResource("10_37iue")
 dialogue_resource = ExtResource("11_n6p8m")
 dialogue_cue = "story"
@@ -1486,3 +1487,5 @@ color = Color(0, 0, 0, 0)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1628863282]
 stream = ExtResource("12_n6p8m")
 autoplay = true
+
+[node name="Speak" type="AudioStreamPlayer" parent="." unique_id=1811053485]
