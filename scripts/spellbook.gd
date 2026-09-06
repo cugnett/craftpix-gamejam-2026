@@ -1,9 +1,17 @@
 extends Node2D
 
+@onready var right_zone: PanelContainer = $SpellBookSprite/RightZone
+@onready var upgrade_stats: Label = $SpellBookSprite/RightZone/UpgradeStats
+@onready var spell_button: TextureButton = $SpellBookSprite/LeftZone/GridContainer/SpellButton
+@onready var spell_button_2: TextureButton = $SpellBookSprite/LeftZone/GridContainer/SpellButton2
+@onready var spell_button_3: TextureButton = $SpellBookSprite/LeftZone/GridContainer/SpellButton3
+
+@export var initial_position: Vector2 = Vector2(-304.0, 4.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
+	right_zone.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,9 +30,114 @@ func _on_book_sheet_booksheet_collected() -> void:
 	position.y += camera_height/4.5
 	
 	#display spellbook
-	$SpellBookSprite.get_child(0).visible = false
+	$SpellBookSprite.get_node("LeftZone").visible = false
 	visible = true
 	$SpellBookSprite.play("open")
 	await $SpellBookSprite.animation_finished
-	$SpellBookSprite.get_child(0).visible = true
+	$SpellBookSprite.get_node("LeftZone").visible = true
 	
+	spell_button.spell_name = "Explosion"
+	spell_button.get_child(0).text = "Explosion"
+	spell_button.randomize_upgrade()
+	spell_button_2.spell_name = "Freeze"
+	spell_button_2.get_child(0).text = "Freeze"
+	spell_button_2.randomize_upgrade()
+	spell_button_3.spell_name = "Shield"
+	spell_button_3.get_child(0).text = "Shield"
+	spell_button_3.randomize_upgrade()
+
+func close_book():
+	$SpellBookSprite.get_node("LeftZone").visible = false
+	right_zone.visible = false
+	$SpellBookSprite.play("close")
+	await $SpellBookSprite.animation_finished
+	position = initial_position
+
+func display_upgrade(spell_name: String, stat_upgraded: String, current_stat: String, multiplier: String) -> void:
+	if stat_upgraded == "Cooldown":
+		upgrade_stats.text = \
+		spell_name + "\n" + \
+		stat_upgraded + "\n" + \
+		current_stat + " sub " + multiplier
+	else: 
+		upgrade_stats.text = \
+		spell_name + "\n" + \
+		stat_upgraded + "\n" + \
+		current_stat + " add " + multiplier
+	right_zone.visible = true
+
+func stat_to_upgrade(weapon: WeaponRessource, stat_upgraded: String) -> String:
+		match stat_upgraded:
+			"Power":
+				return str(weapon.power)
+			"Speed":
+				return str(weapon.speed)
+			"Cooldown":
+				return str(weapon.cooldown)
+		return ""
+
+func _on_spell_button_mouse_entered() -> void:
+	display_upgrade(
+		spell_button.spell_name,
+		spell_button.stat_upgraded,
+		stat_to_upgrade(get_parent().get_node("Player").weapons["explosion"], spell_button.stat_upgraded),
+		str(spell_button.upgrade_multiplier)
+	 )
+
+
+func _on_spell_button_mouse_exited() -> void:
+	right_zone.visible = false
+
+
+func _on_spell_button_2_mouse_entered() -> void:
+	print("mult in spellbook" + str(spell_button_2.upgrade_multiplier))
+	print(str(spell_button_2.upgrade_multiplier))
+	display_upgrade(
+		spell_button_2.spell_name,
+		spell_button_2.stat_upgraded,
+		stat_to_upgrade(get_parent().get_node("Player").weapons["freeze"], spell_button_2.stat_upgraded),
+		str(spell_button_2.upgrade_multiplier)
+	 )
+
+
+func _on_spell_button_2_mouse_exited() -> void:
+	right_zone.visible = false
+
+
+func _on_spell_button_3_mouse_entered() -> void:
+	display_upgrade(
+		spell_button_3.spell_name,
+		spell_button_3.stat_upgraded,
+		stat_to_upgrade(get_parent().get_node("Player").weapons["shield"], spell_button_3.stat_upgraded),
+		str(spell_button_3.upgrade_multiplier)
+	 )
+
+
+func _on_spell_button_3_mouse_exited() -> void:
+	right_zone.visible = false
+
+func upgrade_weapon(weapon: WeaponRessource, spell: TextureButton):
+	match spell.stat_upgraded:
+		"Power":
+			weapon.upgrade_power(spell.upgrade_multiplier)
+		"Speed":
+			weapon.upgrade_speed(spell.upgrade_multiplier)
+		"Cooldown":
+			weapon.upgrade_cooldown(spell.upgrade_multiplier)
+
+func _on_spell_button_button_up() -> void:
+	var weapon = get_parent().get_node("Player").weapons["explosion"]
+	upgrade_weapon(weapon, spell_button)
+	close_book()
+
+
+func _on_spell_button_2_button_up() -> void:
+	var weapon = get_parent().get_node("Player").weapons["freeze"]
+	upgrade_weapon(weapon, spell_button_2)
+	close_book()
+
+
+func _on_spell_button_3_button_up() -> void:
+	var weapon = get_parent().get_node("Player").weapons["shield"]
+	upgrade_weapon(weapon, spell_button_3)
+	close_book()
