@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rys35w76rhvx" path="res://scripts/spell_button.gd" id="1_w2jb8"]
 [ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="2_3ts4b"]
+[ext_resource type="AudioStream" uid="uid://xh1uim54xwec" path="res://assets/sfx/button_hover.wav" id="3_3ts4b"]
 
 [sub_resource type="Gradient" id="Gradient_3ts4b"]
 offsets = PackedFloat32Array(0)
@@ -47,4 +48,9 @@ label_settings = SubResource("LabelSettings_6u0ko")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=1869918090]
+stream = ExtResource("3_3ts4b")
+
 [connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

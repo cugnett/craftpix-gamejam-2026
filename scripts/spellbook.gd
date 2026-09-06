@@ -5,8 +5,11 @@ extends Node2D
 @onready var spell_button: TextureButton = $SpellBookSprite/LeftZone/GridContainer/SpellButton
 @onready var spell_button_2: TextureButton = $SpellBookSprite/LeftZone/GridContainer/SpellButton2
 @onready var spell_button_3: TextureButton = $SpellBookSprite/LeftZone/GridContainer/SpellButton3
+@onready var open_cose_sound: AudioStreamPlayer = $OpenCoseSound
 
 @export var initial_position: Vector2 = Vector2(-304.0, 4.0)
+@export var book_close_sfx: AudioStreamWAV
+@export var book_open_sfx: AudioStreamWAV
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,6 +37,8 @@ func _on_book_sheet_booksheet_collected() -> void:
 	#display spellbook
 	$SpellBookSprite.get_node("LeftZone").visible = false
 	visible = true
+	open_cose_sound.stream = book_open_sfx
+	open_cose_sound.play()
 	$SpellBookSprite.play("open")
 	await $SpellBookSprite.animation_finished
 	$SpellBookSprite.get_node("LeftZone").visible = true
@@ -52,6 +57,8 @@ func close_book():
 	$SpellBookSprite.get_node("LeftZone").visible = false
 	right_zone.visible = false
 	$SpellBookSprite.play("close")
+	open_cose_sound.stream = book_close_sfx
+	open_cose_sound.play()
 	await $SpellBookSprite.animation_finished
 	position = initial_position
 	get_parent().get_node("Player").can_move = true
@@ -86,6 +93,7 @@ func _on_spell_button_mouse_entered() -> void:
 		stat_to_upgrade(get_parent().get_node("Player").weapons["explosion"], spell_button.stat_upgraded),
 		str(spell_button.upgrade_multiplier)
 	 )
+	
 
 
 func _on_spell_button_mouse_exited() -> void:
