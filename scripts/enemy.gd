@@ -2,15 +2,17 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 
-var health: int = 5
-var damage: int = 1
+var health: float = 5
+var damage: float = 1
 var freezed: bool = false
 
 @onready
 var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+
 var last_direction: Vector2 = Vector2.DOWN
 var target = null
+
 
 
 func _physics_process(_delta: float) -> void:
@@ -58,7 +60,8 @@ func _on_sight_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		target = body
 
-func take_damage(taked_damage: int) -> void:
+func take_damage(taked_damage: float) -> void:
+	print("Enemy take damage")
 	health -= taked_damage
 	# damage animation then :
 	if health <= 0:

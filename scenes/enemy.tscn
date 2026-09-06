@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cwat8bycrmr8r" path="res://assets/tilesets/craftpix-net-160005-free-ruined-temple-top-down-location-pixel-art/Cultist6_Walk.png" id="2_md0e3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xy32i"]
-height = 36.0
+radius = 9.0
+height = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
 atlas = ExtResource("1_7p1mj")
@@ -516,6 +517,8 @@ animations = [{
 resource_local_to_scene = true
 radius = 80.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb335"]
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1841075107]
 z_index = 1
 collision_layer = 2
@@ -535,6 +538,11 @@ animation = &"idle_down"
 shape = SubResource("CircleShape2D_hb335")
 
 [node name="FreezeTimer" type="Timer" parent="." unique_id=2125648386]
+
+[node name="EnemyHitArea" type="Area2D" parent="." unique_id=1934344370]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitArea" unique_id=292389609]
+shape = SubResource("CapsuleShape2D_hb335")
 
 [connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
 [connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]

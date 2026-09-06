@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*uid://c3rodes2l3gxb"
 ChangeScene="*uid://d3545c616tjon"
+SignalManager="*uid://dmyg1jmweyk55"
 
 [dialogue_manager]
 

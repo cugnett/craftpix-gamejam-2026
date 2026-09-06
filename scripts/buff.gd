@@ -11,7 +11,6 @@ var weapon: WeaponRessource
 func _ready() -> void:
 	Text.label_settings.set_font_color(weapon.text_color)
 	Text.text = weapon.text
-	$Timer.start(weapon.cooldown - 1)
 
 func _process(delta: float) -> void:
 	Text.rotation += delta * SPEED
