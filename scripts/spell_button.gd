@@ -7,6 +7,7 @@ enum stat_type {
 }
 
 @onready var rng = RandomNumberGenerator.new()
+@onready var hover_sound: AudioStreamPlayer = $HoverSound
 
 var spell_name: String
 var stat_upgraded: String
@@ -33,3 +34,7 @@ func randomize_upgrade():
 			stat_upgraded = "Speed"
 			upgrade_multiplier = snapped(base_upgrade_multiplier * 10 + 10, 0.1)
 	
+
+
+func _on_mouse_entered() -> void:
+	hover_sound.play()

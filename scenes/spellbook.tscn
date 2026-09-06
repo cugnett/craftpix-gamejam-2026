@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://ni2wcipvrl5w" path="res://scripts/spellbook.gd" id="1_wmh4t"]
 [ext_resource type="Texture2D" uid="uid://dqlgc2cgc2ndj" path="res://assets/tilesets/craftpix-magic-book/Close_book.png" id="2_ie5xj"]
 [ext_resource type="PackedScene" uid="uid://b3neskmwbfpft" path="res://scenes/spell_button.tscn" id="2_lfox7"]
+[ext_resource type="AudioStream" uid="uid://cnjt501fo54cg" path="res://assets/sfx/book_close.wav" id="2_xusxc"]
+[ext_resource type="AudioStream" uid="uid://b2eod7tdtslrv" path="res://assets/sfx/book_open.wav" id="3_0cyu0"]
 [ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="4_n86o1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4goi"]
@@ -135,6 +137,8 @@ animations = [{
 
 [node name="SpellBook" type="Node2D" unique_id=1274499003]
 script = ExtResource("1_wmh4t")
+book_close_sfx = ExtResource("2_xusxc")
+book_open_sfx = ExtResource("3_0cyu0")
 
 [node name="SpellBookSprite" type="AnimatedSprite2D" parent="." unique_id=1182627543]
 z_index = 3
@@ -199,6 +203,8 @@ theme_override_colors/font_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
 theme_override_fonts/font = ExtResource("4_n86o1")
 theme_override_font_sizes/font_size = 12
 autowrap_mode = 3
+
+[node name="OpenCoseSound" type="AudioStreamPlayer" parent="." unique_id=1746950421]
 
 [connection signal="button_up" from="SpellBookSprite/LeftZone/GridContainer/SpellButton" to="." method="_on_spell_button_button_up"]
 [connection signal="mouse_entered" from="SpellBookSprite/LeftZone/GridContainer/SpellButton" to="." method="_on_spell_button_mouse_entered"]
