@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://ctp6jwq2blyek" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cv1foqw5vjyil" path="res://assets/characters/hero1_red.png" id="2_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://by8r7f1vnnl0v" path="res://assets/sfx/Dirt Walk 4.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://bqkk1pqyl0vc7" path="res://assets/sfx/Hit.mp3" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://c4bpesbwoxl7" path="res://assets/sfx/shield_hit.wav" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://byw7fghxuq3l4" path="res://assets/sfx/shield_break.wav" id="7_fjrip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
@@ -440,6 +443,15 @@ shape = SubResource("CapsuleShape2D_hb335")
 [node name="AudioStreamPlayerWalk" type="AudioStreamPlayer" parent="." unique_id=1085588946]
 stream = ExtResource("4_dqkch")
 bus = &"Sfx"
+
+[node name="AudioStreamPlayerHit" type="AudioStreamPlayer" parent="." unique_id=888607703]
+stream = ExtResource("5_qlg0r")
+
+[node name="AudioStreamPlayerShieldHit" type="AudioStreamPlayer" parent="." unique_id=1712389435]
+stream = ExtResource("6_tuyoq")
+
+[node name="AudioStreamPlayerShieldBreak" type="AudioStreamPlayer" parent="." unique_id=1958578498]
+stream = ExtResource("7_fjrip")
 
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
 [connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]
