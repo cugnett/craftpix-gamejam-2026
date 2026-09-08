@@ -10,6 +10,7 @@ var weapons: Dictionary = {
 	"shield": preload("res://ressources/shield_weapon.tres"),
 }
 var can_move: bool = true
+var dead: bool = false
 var new_buff # to contain the active buff instance
 var shield = 0 # player shield
 var invincible = false #to make player invincible after taking damage
@@ -19,6 +20,7 @@ var knockback_timer: float = 0.0
 
 var enemy_collision : Node2D # check if ennemy is colliding with player
 
+@onready var animated_sprite_death: AnimatedSprite2D = $AnimatedSpriteDeath
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var Level: Node2D = $".".get_parent()
 @onready var effects = $Effects
@@ -55,8 +57,7 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("shield") and weapons["shield"].is_ready:
 		shoot(last_direction, weapons["shield"])
 	
-	if can_move:
-		_process_movement()
+	_process_movement()
 	_process_animation()
 	_process_collisions()
 	move_and_slide()
@@ -73,7 +74,7 @@ func _process_collisions() -> void:
 func _process_movement() -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
 	
-	if direction != Vector2.ZERO:
+	if direction != Vector2.ZERO and can_move:
 		velocity = direction * SPEED
 		last_direction = direction
 	else :
@@ -172,7 +173,6 @@ func _on_freeze_timer_timeout() -> void:
 
 
 func _on_shield_timer_timeout() -> void:
-	print("shield available")
 	weapons["shield"].is_ready = true
 
 func take_damage(taked_damage: float):
@@ -183,7 +183,8 @@ func take_damage(taked_damage: float):
 		invincible = true
 		health -= damage_taken
 		if damage_taken > 0:
-			playerHitAudioStream.play()
+			if !dead:
+				playerHitAudioStream.play()
 			health_changed.emit(-damage_taken)
 			effects.play("hurtBlink")
 		else:
@@ -203,17 +204,18 @@ func take_damage(taked_damage: float):
 				playerShieldHitAudioStream.play()
 		
 	if health <= 0:
-		#death
-		pass
-	else:
-		#invincibility
-		pass
+		dead = true
+		can_move = false
+		animated_sprite_2d.visible = false
+		animated_sprite_death.visible = true
+		animated_sprite_death.play("death")
+		await get_tree().create_timer(0.5).timeout
+		ChangeScene.change_scene(ChangeScene.death_menu)
 
 
 func _on_invincibility_timer_timeout() -> void:
 	invincible = false
 	effects.stop(false)
-
 
 
 

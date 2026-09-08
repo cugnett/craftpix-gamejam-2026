@@ -8,6 +8,22 @@
 [ext_resource type="AudioStream" uid="uid://c4bpesbwoxl7" path="res://assets/sfx/shield_hit.wav" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://byw7fghxuq3l4" path="res://assets/sfx/shield_break.wav" id="7_fjrip"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_giy8y"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdfoy"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhpqf"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5jhy"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 192, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(0, 0, 64, 64)
@@ -170,6 +186,50 @@ region = Rect2(192, 384, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqqed"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdfoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhpqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5jhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdfoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhpqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5jhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdfoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhpqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5jhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tuyoq")
@@ -400,6 +460,53 @@ _data = {
 radius = 18.46154
 height = 61.538467
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_3b725"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdfoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhpqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5jhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdfoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhpqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5jhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdfoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhpqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5jhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 8.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=512779361]
 z_index = 1
 scale = Vector2(0.65, 0.65)
@@ -409,7 +516,7 @@ player_map_position = Vector2(0, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=749209541]
 clip_children = 2
 sprite_frames = SubResource("SpriteFrames_aqqed")
-animation = &"invincible_idle_down"
+animation = &"death"
 
 [node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D" unique_id=968539319]
 offset_left = -24.615387
@@ -452,6 +559,13 @@ stream = ExtResource("6_tuyoq")
 
 [node name="AudioStreamPlayerShieldBreak" type="AudioStreamPlayer" parent="." unique_id=1958578498]
 stream = ExtResource("7_fjrip")
+
+[node name="AnimatedSpriteDeath" type="AnimatedSprite2D" parent="." unique_id=2141210048]
+visible = false
+sprite_frames = SubResource("SpriteFrames_3b725")
+animation = &"death"
+frame = 12
+frame_progress = 1.0
 
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
 [connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]

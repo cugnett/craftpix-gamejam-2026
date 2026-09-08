@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 const game_scene = ("res://scenes/level1.tscn")
+const death_menu = ("res://scenes/death_menu.tscn")
+
 # Called when the node enters the scene tree for the first time.
 
 func change_scene(scene_path):
