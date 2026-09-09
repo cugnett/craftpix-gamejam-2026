@@ -1,0 +1,164 @@
+[gd_scene format=4 uid="uid://dc7km5t55883o"]
+
+[ext_resource type="PackedScene" uid="uid://djb6ajxxhfro2" path="res://scenes/player.tscn" id="1_4835h"]
+[ext_resource type="Script" uid="uid://0h0s72wu3u33" path="res://scripts/end_scene.gd" id="1_notft"]
+[ext_resource type="Texture2D" uid="uid://cy64gy2ov4eob" path="res://assets/backgrounds/Clouds/Clouds 2/1.png" id="1_ojf8p"]
+[ext_resource type="Texture2D" uid="uid://dna7btnye782d" path="res://assets/backgrounds/Clouds/Clouds 2/2.png" id="2_4835h"]
+[ext_resource type="Texture2D" uid="uid://dsg6eh4sroy75" path="res://assets/backgrounds/Clouds/Clouds 2/3.png" id="3_gxua3"]
+[ext_resource type="Texture2D" uid="uid://bahcfle2mh3j0" path="res://assets/backgrounds/Clouds/Clouds 2/4.png" id="4_hyprt"]
+[ext_resource type="Texture2D" uid="uid://bw6yf33wleahi" path="res://assets/characters/buddha.png" id="5_notft"]
+[ext_resource type="TileSet" uid="uid://f5rgtvqimpmc" path="res://assets/tilesets/exterior_tileset.tres" id="7_gxua3"]
+[ext_resource type="AudioStream" uid="uid://ces8o52p6cm5l" path="res://assets/musics/Asian-Travel.mp3" id="8_hyprt"]
+[ext_resource type="Script" uid="uid://cqcur1rm7433g" path="res://addons/dialogue_manager/nodes/actionable/dialogue_actionable_2d.gd" id="10_24b1x"]
+[ext_resource type="Resource" uid="uid://dkex7snxrv1t" path="res://dialogues/end_scene.dialogue" id="11_i4wik"]
+[ext_resource type="AudioStream" uid="uid://b8heu0llk34ga" path="res://assets/sfx/sitar_defeated.wav" id="12_i4wik"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5aub"]
+size = Vector2(64, 26)
+
+[sub_resource type="Animation" id="Animation_gxua3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buddha:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(272, -160)]
+}
+
+[sub_resource type="Animation" id="Animation_hyprt"]
+resource_name = "buddha_arrival"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buddha:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.3333334, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(288, -160), Vector2(288, 190)]
+}
+
+[sub_resource type="Animation" id="Animation_notft"]
+resource_name = "buddha_idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buddha:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(272, 180), Vector2(272, 200), Vector2(272, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_pmkd0"]
+resource_name = "clouds"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pmkd0"]
+_data = {
+&"RESET": SubResource("Animation_gxua3"),
+&"buddha_arrival": SubResource("Animation_hyprt"),
+&"buddha_idle": SubResource("Animation_notft"),
+&"clouds": SubResource("Animation_pmkd0")
+}
+
+[node name="EndScene" type="Node2D" unique_id=447971128]
+script = ExtResource("1_notft")
+
+[node name="Player" parent="." unique_id=512779361 instance=ExtResource("1_4835h")]
+position = Vector2(704.00006, 456)
+
+[node name="Cloud" type="Sprite2D" parent="." unique_id=1815972354]
+position = Vector2(403.19998, 226.8)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("1_ojf8p")
+
+[node name="Cloud2" type="Sprite2D" parent="." unique_id=66634689]
+position = Vector2(403.99994, 228)
+scale = Vector2(1.4027777, 1.4074074)
+texture = ExtResource("2_4835h")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1769032017]
+auto_translate_mode = 1
+scroll_offset = Vector2(-288, 16)
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-10, 0)
+
+[node name="Cloud3" type="Sprite2D" parent="Parallax2D" unique_id=1023725438]
+texture_repeat = 2
+position = Vector2(16, 88)
+scale = Vector2(1.4027778, 1.4074074)
+texture = ExtResource("3_gxua3")
+region_enabled = true
+region_rect = Rect2(0, 0, 1536, 800)
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1394928035]
+auto_translate_mode = 1
+scroll_offset = Vector2(-288, 16)
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-5, 0)
+
+[node name="Cloud4" type="Sprite2D" parent="Parallax2D2" unique_id=326445452]
+position = Vector2(979.99994, 195.99997)
+scale = Vector2(1.4027777, 1.4074073)
+texture = ExtResource("4_hyprt")
+region_rect = Rect2(0, 0, 1536, 800)
+
+[node name="Buddha" type="Sprite2D" parent="." unique_id=1044714846]
+position = Vector2(272, -160)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_notft")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1087524786]
+anchor_mode = 0
+zoom = Vector2(1.5, 1.5)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=265628029]
+tile_map_data = PackedByteArray("AAAiABgAAAAGAAcAAFAiABkAAAAGAAcAAGAjABgAAAAGAAYAAFAjABkAAgATAAMAAFAkABgAAgASAAEAAFAkABkAAgATAAMAAFAlABgAAgASAAIAAFAlABkAAgATAAMAAFAmABgAAgASAAEAAFAmABkAAgATAAMAAFAnABgAAAAGAAcAAFAnABkAAgATAAMAAFAoABgAAAAGAAcAAFAoABkAAAAGAAYAAGApABgAAAAGAAYAAFApABkAAAAGAAcAAGAqABgAAgASAAEAAFAqABkAAgATAAMAAFArABgAAAANAAUAAAArABkAAgAGAAIAAGArABoAAAAGAAcAAAArABsAAAAGAAgAAAArABwAAAAGAAkAAAArAB0AAAAGAAoAAAAsABgAAAAOAAUAAAAsABkAAAAHAAYAAAAsABoAAAAHAAcAAAAsABsAAAAHAAgAAAAsABwAAAAHAAkAAAAsAB0AAAAHAAoAAAAYABIAAAADAAYAAAAYABMAAAAKAAUAAFAYABQAAgADAAMAAAAYABUAAgADAAQAAAAVABIAAgABAAEAAAAVABMAAAAJAAUAAGAVABQAAgABAAMAAAAVABUAAgABAAQAAAAWABIAAgACAAEAAAAWABMAAgACAAIAAAAWABQAAgAOAAIAAAAWABUAAgAWAAcAAAAWABYAAgAWAAEAAAAWABcAAgAWAAIAAAAXABIAAgACAAEAAAAXABMAAgACAAIAAAAXABQAAgAPAAIAAAAXABUAAgAXAAcAAAAXABYAAgAXAAEAAAAXABcAAgAXAAIAAAAVABgAAgABAAEAAAAVABkAAgABAAEAAGAdABgAAAAGAAoAAFAdABkAAgATAAMAAFAeABgAAAAGAAkAAFAeABkAAgATAAMAAFAfABgAAAAGAAgAAFAfABkAAAAGAAYAAGAgABgAAgASAAIAAFAgABkAAAAGAAcAAGAhABgAAgASAAEAAFAhABkAAAAGAAYAAGAYABgAAAAGAAYAAFAYABkAAAAGAAcAAGAZABgAAgASAAIAAFAZABkAAgATAAMAAFAaABgAAgASAAEAAFAaABkAAgATAAMAAFAbABgAAAAGAAcAAFAbABkAAgATAAMAAFAcABgAAAAGAAYAAFAcABkAAgATAAMAAFAWABgAAgASAAIAAFAWABkAAgATAAMAAFAXABgAAAAGAAcAAFAXABkAAAAGAAYAAGA=")
+tile_set = ExtResource("7_gxua3")
+
+[node name="InvisibleWalls" type="TileMapLayer" parent="." unique_id=1779355374]
+modulate = Color(1, 1, 1, 0)
+tile_map_data = PackedByteArray("AAAVABoAAgALAA4AAAAWABoAAgALAA4AAAAXABoAAgALAA4AAAAYABoAAgALAA4AAAAZABoAAgALAA4AAAAaABoAAgALAA4AAAAbABoAAgALAA4AAAAcABoAAgALAA4AAAAdABoAAgALAA4AAAAeABoAAgALAA4AAAAfABoAAgALAA4AAAAgABoAAgALAA4AAAAhABoAAgALAA4AAAAiABoAAgALAA4AAAAjABoAAgALAA4AAAAkABoAAgALAA4AAAAlABoAAgALAA4AAAAmABoAAgALAA4AAAAnABoAAgALAA4AAAAoABoAAgALAA4AAAApABoAAgALAA4AAAAqABoAAgALAA4AAAAqABsAAgALAA4AAAAqABwAAgALAA4AAAAqAB0AAgALAA4AAAAqAB4AAgALAA4AAAArAB4AAgALAA4AAAAsAB4AAgALAA4AAAAtAB4AAgALAA4AAAAtAB0AAgALAA4AAAAtABwAAgALAA4AAAAtABsAAgALAA4AAAAtABoAAgALAA4AAAAtABkAAgALAA4AAAAtABgAAgALAA4AAAAtABcAAgALAA4AAAAtABYAAgALAA4AAAAsABYAAgALAA4AAAArABYAAgALAA4AAAAqABYAAgALAA4AAAApABYAAgALAA4AAAAoABYAAgALAA4AAAAnABYAAgALAA4AAAAmABYAAgALAA4AAAAlABYAAgALAA4AAAAkABYAAgALAA4AAAAjABYAAgALAA4AAAAiABYAAgALAA4AAAAhABYAAgALAA4AAAAgABYAAgALAA4AAAAfABYAAgALAA4AAAAeABYAAgALAA4AAAAdABYAAgALAA4AAAAcABYAAgALAA4AAAAbABYAAgALAA4AAAAaABYAAgALAA4AAAAUABoAAgALAA4AAAATABoAAgALAA4AAAATABkAAgALAA4AAAATABgAAgALAA4AAAATABcAAgALAA4AAAATABYAAgALAA4AAAATABUAAgALAA4AAAATABQAAgALAA4AAAATABMAAgALAA4AAAATABIAAgALAA4AAAATABEAAgALAA4AAAATABAAAgALAA4AAAAUABAAAgALAA4AAAAVABAAAgALAA4AAAAWABAAAgALAA4AAAAXABAAAgALAA4AAAAYABAAAgALAA4AAAAZABAAAgALAA4AAAAaABAAAgALAA4AAAAaABEAAgALAA4AAAAaABIAAgALAA4AAAAaABMAAgALAA4AAAAaABQAAgALAA4AAAAaABUAAgALAA4AAAAZABYAAgALAA4AAAAVABYAAgALAA4AAAAUABYAAgALAA4AAAAUABcAAgALAA4AAAAUABgAAgALAA4AAAAUABkAAgALAA4AAAAYABYAAgALAA4AAAAZABUAAgALAA4AAAAZABQAAgALAA4AAAAZABMAAgALAA4AAAAZABIAAgALAA4AAAAZABEAAgALAA4AAAAUABUAAgALAA4AAAAUABQAAgALAA4AAAAUABMAAgALAA4AAAAUABIAAgALAA4AAAAUABEAAgALAA4AAAA=")
+tile_set = ExtResource("7_gxua3")
+
+[node name="EndArea" type="Area2D" parent="." unique_id=329598777]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea" unique_id=1658357422]
+position = Vector2(368, 293)
+shape = SubResource("RectangleShape2D_l5aub")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1083576546]
+libraries/ = SubResource("AnimationLibrary_pmkd0")
+
+[node name="EndMusic" type="AudioStreamPlayer" parent="." unique_id=1318301473]
+stream = ExtResource("8_hyprt")
+volume_db = -14.791
+
+[node name="DialogueActionable2D" type="Area2D" parent="." unique_id=1033838932]
+script = ExtResource("10_24b1x")
+dialogue_resource = ExtResource("11_i4wik")
+dialogue_cue = "story"
+metadata/_custom_type_script = "uid://cqcur1rm7433g"
+
+[node name="BuddhaArrival" type="AudioStreamPlayer" parent="." unique_id=632641932]
+stream = ExtResource("12_i4wik")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=706965893]
+enabled = false
+target_position = Vector2(360, 272)
+
+[connection signal="body_entered" from="EndArea" to="." method="_on_end_area_body_entered"]

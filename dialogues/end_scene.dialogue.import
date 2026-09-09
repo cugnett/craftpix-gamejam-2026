@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dkex7snxrv1t"
+path="res://.godot/imported/end_scene.dialogue-8f983fb07a2aee95f8a3c299ebc33020.tres"
+
+[deps]
+
+source_file="res://dialogues/end_scene.dialogue"
+dest_files=["res://.godot/imported/end_scene.dialogue-8f983fb07a2aee95f8a3c299ebc33020.tres"]
+
+[params]
+
+defaults=true

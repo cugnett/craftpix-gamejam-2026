@@ -113,6 +113,7 @@ stream = ExtResource("17_14jow")
 bus = &"Music"
 
 [node name="Jikokuten" type="Sprite2D" parent="." unique_id=256708606]
+visible = false
 position = Vector2(352.00003, 136)
 scale = Vector2(0.5816327, 0.58)
 texture = ExtResource("17_mvsps")

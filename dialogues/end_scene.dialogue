@@ -1,0 +1,24 @@
+~ start
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END
+
+~ story
+do buddha_appear()
+Yeong-Gi: ... ...
+- Oh! Buddha! Why don't you allow us monks to speak ? I came all the way to ask you to change it
+	Buddha: See how violent words you used to come here !!!
+- Buddha! You and your stupid rules ! I came here to defeat you !
+	Buddha: You shall die !!!
+- Do not talk
+	Buddha: ... ... ...
+do buddha_laser()
+
+=> END
