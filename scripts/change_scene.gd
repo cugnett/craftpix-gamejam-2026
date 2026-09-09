@@ -1,7 +1,9 @@
 extends CanvasLayer
 
+const intro_scene = ("res://scenes/intro.tscn")
 const game_scene = ("res://scenes/level1.tscn")
 const death_menu = ("res://scenes/death_menu.tscn")
+const end_scene = ("res://scenes/end_scene.tscn")
 
 # Called when the node enters the scene tree for the first time.
 

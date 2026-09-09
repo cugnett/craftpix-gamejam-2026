@@ -13,9 +13,11 @@
 [ext_resource type="Resource" uid="uid://dkex7snxrv1t" path="res://dialogues/end_scene.dialogue" id="11_i4wik"]
 [ext_resource type="AudioStream" uid="uid://b8heu0llk34ga" path="res://assets/sfx/sitar_defeated.wav" id="12_i4wik"]
 [ext_resource type="Script" uid="uid://cmh1lu202d7mb" path="res://scripts/ray_cast.gd" id="13_wfflf"]
+[ext_resource type="AudioStream" uid="uid://s8mn68xvn1bh" path="res://assets/sfx/laser_beam.mp3" id="14_6ieop"]
+[ext_resource type="AudioStream" uid="uid://dl0qmua44p4ow" path="res://assets/sfx/laser_burn.wav" id="15_k4w31"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5aub"]
-size = Vector2(64, 26)
+size = Vector2(5.25, 26)
 
 [sub_resource type="Animation" id="Animation_gxua3"]
 length = 0.001
@@ -30,6 +32,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(272, -160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hyprt"]
@@ -65,15 +79,49 @@ tracks/0/keys = {
 "values": [Vector2(288, 180), Vector2(288, 200), Vector2(288, 180)]
 }
 
+[sub_resource type="Animation" id="Animation_wfflf"]
+resource_name = "buddha_laser"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buddha:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(288, 180)]
+}
+
 [sub_resource type="Animation" id="Animation_pmkd0"]
 resource_name = "clouds"
+
+[sub_resource type="Animation" id="Animation_k4w31"]
+resource_name = "player_burning"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pmkd0"]
 _data = {
 &"RESET": SubResource("Animation_gxua3"),
 &"buddha_arrival": SubResource("Animation_hyprt"),
 &"buddha_idle": SubResource("Animation_notft"),
-&"clouds": SubResource("Animation_pmkd0")
+&"buddha_laser": SubResource("Animation_wfflf"),
+&"clouds": SubResource("Animation_pmkd0"),
+&"player_burning": SubResource("Animation_k4w31")
 }
 
 [node name="EndScene" type="Node2D" unique_id=447971128]
@@ -139,7 +187,7 @@ tile_set = ExtResource("7_gxua3")
 [node name="EndArea" type="Area2D" parent="." unique_id=329598777]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea" unique_id=1658357422]
-position = Vector2(368, 293)
+position = Vector2(361, 272)
 shape = SubResource("RectangleShape2D_l5aub")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1083576546]
@@ -160,31 +208,38 @@ stream = ExtResource("12_i4wik")
 
 [node name="Laser" type="RayCast2D" parent="." unique_id=706965893]
 position = Vector2(272, 88)
-target_position = Vector2(48, 112)
+target_position = Vector2(88, 200)
 script = ExtResource("13_wfflf")
 
 [node name="Line2D" type="Line2D" parent="Laser" unique_id=647409160]
-position = Vector2(-127.99999, -104)
-scale = Vector2(4.6499996, 3.35)
-points = PackedVector2Array(37.849464, 64.477615, 27.52688, 31.044775)
+visible = false
+position = Vector2(-133.70645, -100.06894)
+scale = Vector2(4.767776, 3.3076148)
+points = PackedVector2Array(46.451614, 90.74626, 36.86416, 60.500908, 27.52688, 31.044775)
 width = 2.0
 default_color = Color(0.9924765, 0.3957122, 0.61378974, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Laser2" type="RayCast2D" parent="." unique_id=603497010]
-visible = false
 position = Vector2(304, 88)
 target_position = Vector2(64, 200)
 script = ExtResource("13_wfflf")
 
 [node name="Line2D" type="Line2D" parent="Laser2" unique_id=816415751]
-position = Vector2(-127.99999, -104)
-scale = Vector2(4.6499996, 3.35)
+visible = false
+position = Vector2(-127.26888, -100.06893)
+scale = Vector2(4.633111, 3.3076148)
 points = PackedVector2Array(41.29032, 90.74626, 27.52688, 31.044775)
 width = 2.0
 default_color = Color(0.9924765, 0.3957122, 0.61378974, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="." unique_id=1138713107]
+stream = ExtResource("14_6ieop")
+
+[node name="BurningSound" type="AudioStreamPlayer" parent="." unique_id=1508753491]
+stream = ExtResource("15_k4w31")
 
 [connection signal="body_entered" from="EndArea" to="." method="_on_end_area_body_entered"]

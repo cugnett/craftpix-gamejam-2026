@@ -20,5 +20,5 @@ Yeong-Gi: ... ...
 - Do not talk
 	Buddha: ... ... ...
 do buddha_laser()
-
+do trigger_end()
 => END
