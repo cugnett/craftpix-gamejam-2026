@@ -1,3 +1,4 @@
+class_name Enemy
 extends CharacterBody2D
 
 const SPEED = 70.0
@@ -65,6 +66,9 @@ func take_damage(taked_damage: float) -> void:
 	print("Enemy take damage")
 	health -= taked_damage
 	print(health)
+	# target player if not already
+	if target == null:
+		target = get_parent().get_node("Player")
 	# damage animation then :
 	if health <= 0:
 		# death animation then :
@@ -76,6 +80,9 @@ func frozen(freeze_power: float) -> void:
 	await get_tree().create_timer(freeze_power).timeout
 	animated_sprite_2d.self_modulate = Color("#ffffffff")
 	is_frozen = false
+	# target player if not already
+	if target == null:
+		target = get_parent().get_node("Player")
 
 func freeze(freeze_power: float) -> void:
 	freezed = true
