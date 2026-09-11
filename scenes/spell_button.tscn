@@ -50,6 +50,7 @@ vertical_alignment = 1
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=1869918090]
 stream = ExtResource("3_3ts4b")
+bus = &"Sfx"
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

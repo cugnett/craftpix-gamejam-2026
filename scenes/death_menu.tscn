@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ces8o52p6cm5l" path="res://assets/musics/Asian-Travel.mp3" id="4_uldby"]
 [ext_resource type="AudioStream" uid="uid://xh1uim54xwec" path="res://assets/sfx/button_hover.wav" id="4_vqs20"]
 [ext_resource type="AudioStream" uid="uid://flpyrhcqoyko" path="res://assets/sfx/vibraphone_defeated.wav" id="5_20fbl"]
+[ext_resource type="PackedScene" uid="uid://2y5dj2bk21ky" path="res://scenes/options_menu.tscn" id="7_tie44"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aqqed"]
 texture = ExtResource("1_gm7js")
@@ -138,14 +139,20 @@ vertical_alignment = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=2019334770]
 stream = ExtResource("4_uldby")
-volume_db = -12.0
+bus = &"Music"
 parameters/looping = true
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="." unique_id=1109287653]
 stream = ExtResource("4_vqs20")
+bus = &"Sfx"
 
 [node name="OnReadySound" type="AudioStreamPlayer" parent="." unique_id=763494014]
 stream = ExtResource("5_20fbl")
+bus = &"Sfx"
+
+[node name="OptionsMenu" parent="." unique_id=758864990 instance=ExtResource("7_tie44")]
+visible = false
+layout_mode = 1
 
 [connection signal="mouse_entered" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

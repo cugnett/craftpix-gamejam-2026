@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://c37b07ulcp3d2"]
+
+[ext_resource type="Script" uid="uid://d2ctyn6hd2w0g" path="res://scripts/start_menu.gd" id="1_nxjfj"]
+[ext_resource type="Texture2D" uid="uid://cigaa7ssengfr" path="res://assets/backgrounds/temple_intro.jpg" id="2_u4qax"]
+[ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="3_5byqq"]
+[ext_resource type="AudioStream" uid="uid://ces8o52p6cm5l" path="res://assets/musics/Asian-Travel.mp3" id="4_e58y3"]
+[ext_resource type="AudioStream" uid="uid://xh1uim54xwec" path="res://assets/sfx/button_hover.wav" id="5_apowk"]
+[ext_resource type="AudioStream" uid="uid://flpyrhcqoyko" path="res://assets/sfx/vibraphone_defeated.wav" id="6_vnuwp"]
+[ext_resource type="PackedScene" uid="uid://2y5dj2bk21ky" path="res://scenes/options_menu.tscn" id="7_egh8s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b1kog"]
+texture = ExtResource("2_u4qax")
+modulate_color = Color(0.38170326, 0.38170323, 0.38170323, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruo1u"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqu1h"]
+bg_color = Color(0.44291073, 0.4429108, 0.4429106, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0oe1"]
+bg_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trkcg"]
+bg_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="StartMenu" type="Control" unique_id=791590504]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nxjfj")
+
+[node name="Panel" type="Panel" parent="." unique_id=737902120]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_b1kog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1936986008]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -102.0
+offset_right = 187.8125
+offset_bottom = 198.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=167226869]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5byqq")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ruo1u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gqu1h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s0oe1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_trkcg")
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=1169967467]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5byqq")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ruo1u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gqu1h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s0oe1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_trkcg")
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=750213889]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5byqq")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ruo1u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gqu1h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s0oe1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_trkcg")
+text = "Exit"
+
+[node name="Label" type="Label" parent="." unique_id=1268012771]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.75
+offset_top = -255.0
+offset_right = 229.75
+offset_bottom = -169.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5byqq")
+theme_override_font_sizes/font_size = 68
+text = "Don't speak TenTen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=406660635]
+stream = ExtResource("4_e58y3")
+bus = &"Music"
+parameters/looping = true
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="." unique_id=1808092557]
+stream = ExtResource("5_apowk")
+bus = &"Sfx"
+
+[node name="OnReadySound" type="AudioStreamPlayer" parent="." unique_id=2144674525]
+stream = ExtResource("6_vnuwp")
+bus = &"Sfx"
+
+[node name="OptionsMenu" parent="." unique_id=758864990 instance=ExtResource("7_egh8s")]
+visible = false
+layout_mode = 1
+
+[connection signal="mouse_entered" from="VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="button_up" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_mouse_entered"]

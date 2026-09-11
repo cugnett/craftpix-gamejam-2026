@@ -9,10 +9,14 @@ var tween: Tween = null
 
 @onready var line_2d: Line2D = $Line2D
 @onready var line_width := line_2d.width
+@onready var casting_laser_particles: CPUParticles2D = $CastingLaserParticles
+@onready var collision_laser_particles: CPUParticles2D = $CollisionLaserParticles
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_is_casting(false)
+	print(position)
+	casting_laser_particles.direction = target_position.normalized()
   
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -27,8 +31,9 @@ func _physics_process(delta: float) -> void:
 	if is_colliding():
 		print("colliding :" + str(laser_end_position))
 		laser_end_position = to_local(get_collision_point())
+		collision_laser_particles.global_rotation = get_collision_normal().angle()
 	line_2d.points[1] = laser_end_position
-	target_position =laser_end_position
+	target_position = laser_end_position
 
 
 
@@ -38,6 +43,8 @@ func appear() -> void:
 		tween.kill()
 	tween = create_tween()
 	tween.tween_property(line_2d, "width", line_width, growth_time * 2.0).from(0.0)
+	casting_laser_particles.visible = true
+	collision_laser_particles.visible = true
 	
 func disappear() -> void:
 	if tween and tween.is_running():
@@ -45,6 +52,8 @@ func disappear() -> void:
 	tween = create_tween()
 	tween.tween_property(line_2d, "width", 0.0, growth_time).from_current()
 	tween.tween_callback(line_2d.hide)
+	casting_laser_particles.visible = false
+	collision_laser_particles.visible = false
 
 
 func set_is_casting(new_value: bool) -> void:

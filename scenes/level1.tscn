@@ -104,6 +104,7 @@ player_map_position = Vector2(0, 0)
 stream = ExtResource("13_f31uk")
 volume_db = -14.922
 autoplay = true
+bus = &"Music"
 
 [node name="SpellBook" parent="." unique_id=1274499003 instance=ExtResource("15_i8kv5")]
 position = Vector2(-304, 48)

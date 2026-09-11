@@ -553,12 +553,15 @@ bus = &"Sfx"
 
 [node name="AudioStreamPlayerHit" type="AudioStreamPlayer" parent="." unique_id=888607703]
 stream = ExtResource("5_qlg0r")
+bus = &"Sfx"
 
 [node name="AudioStreamPlayerShieldHit" type="AudioStreamPlayer" parent="." unique_id=1712389435]
 stream = ExtResource("6_tuyoq")
+bus = &"Sfx"
 
 [node name="AudioStreamPlayerShieldBreak" type="AudioStreamPlayer" parent="." unique_id=1958578498]
 stream = ExtResource("7_fjrip")
+bus = &"Sfx"
 
 [node name="AnimatedSpriteDeath" type="AnimatedSprite2D" parent="." unique_id=2141210048]
 visible = false

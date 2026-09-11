@@ -26,6 +26,7 @@ one_shot = true
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="." unique_id=1798183941]
 stream = ExtResource("4_iutap")
+bus = &"Sfx"
 
 [connection signal="finished" from="ExplosionFX" to="." method="_on_explosion_fx_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

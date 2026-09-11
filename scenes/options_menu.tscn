@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://2y5dj2bk21ky"]
+
+[ext_resource type="Script" uid="uid://cpwj2v8c4jgfp" path="res://scripts/options_menu.gd" id="1_hm4m4"]
+[ext_resource type="Script" uid="uid://hae7sawkq8hf" path="res://scripts/audio_options.gd" id="1_ijpji"]
+[ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="1_liyum"]
+[ext_resource type="AudioStream" uid="uid://xh1uim54xwec" path="res://assets/sfx/button_hover.wav" id="4_lfjc7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hm4m4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfjc7"]
+bg_color = Color(0.44291073, 0.4429108, 0.4429106, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xsyx"]
+bg_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn0l"]
+bg_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="OptionsMenu" type="Control" unique_id=758864990]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hm4m4")
+
+[node name="AudioOptions" type="Control" parent="." unique_id=1844196795]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ijpji")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioOptions" unique_id=1448408313]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2170139
+anchor_top = 0.3225309
+anchor_right = 0.7829861
+anchor_bottom = 0.68672836
+offset_top = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MasterLabel" type="Label" parent="AudioOptions/VBoxContainer" unique_id=1513039193]
+layout_mode = 2
+size_flags_vertical = 10
+offset_transform_enabled = true
+offset_transform_position = Vector2(25, 0)
+theme_override_fonts/font = ExtResource("1_liyum")
+text = "Master"
+
+[node name="MasterHSlider" type="HSlider" parent="AudioOptions/VBoxContainer" unique_id=413985800]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.05
+
+[node name="MusicLabel" type="Label" parent="AudioOptions/VBoxContainer" unique_id=1141639876]
+layout_mode = 2
+size_flags_vertical = 10
+offset_transform_enabled = true
+offset_transform_position = Vector2(25, 0)
+theme_override_fonts/font = ExtResource("1_liyum")
+text = "Music"
+
+[node name="MusicHSlider" type="HSlider" parent="AudioOptions/VBoxContainer" unique_id=1198262443]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.05
+
+[node name="SfxLabel" type="Label" parent="AudioOptions/VBoxContainer" unique_id=1566783378]
+layout_mode = 2
+size_flags_vertical = 10
+offset_transform_enabled = true
+offset_transform_position = Vector2(25, 0)
+theme_override_fonts/font = ExtResource("1_liyum")
+text = "SFX"
+
+[node name="SfxHSlider" type="HSlider" parent="AudioOptions/VBoxContainer" unique_id=542870900]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.05
+
+[node name="ConfirmButton" type="Button" parent="AudioOptions" unique_id=150315729]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7213542
+anchor_top = 0.7314815
+anchor_right = 0.8368056
+anchor_bottom = 0.80401236
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_liyum")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_hm4m4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lfjc7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3xsyx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dhn0l")
+text = "Validate"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="." unique_id=1486294014]
+stream = ExtResource("4_lfjc7")
+bus = &"Sfx"
+
+[connection signal="mouse_exited" from="AudioOptions/VBoxContainer/MasterHSlider" to="AudioOptions" method="_on_master_h_slider_mouse_exited"]
+[connection signal="mouse_exited" from="AudioOptions/VBoxContainer/MusicHSlider" to="AudioOptions" method="_on_music_h_slider_mouse_exited"]
+[connection signal="mouse_exited" from="AudioOptions/VBoxContainer/SfxHSlider" to="AudioOptions" method="_on_sfx_h_slider_mouse_exited"]
+[connection signal="mouse_entered" from="AudioOptions/ConfirmButton" to="." method="_on_confirm_button_mouse_entered"]
+[connection signal="pressed" from="AudioOptions/ConfirmButton" to="." method="_on_confirm_button_pressed"]

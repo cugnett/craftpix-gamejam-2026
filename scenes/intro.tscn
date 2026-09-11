@@ -1487,5 +1487,7 @@ color = Color(0, 0, 0, 0)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1628863282]
 stream = ExtResource("12_n6p8m")
 autoplay = true
+bus = &"Music"
 
 [node name="Speak" type="AudioStreamPlayer" parent="." unique_id=1811053485]
+bus = &"Sfx"
