@@ -138,7 +138,11 @@ stream = ExtResource("4_lfjc7")
 bus = &"Sfx"
 
 [connection signal="mouse_exited" from="AudioOptions/VBoxContainer/MasterHSlider" to="AudioOptions" method="_on_master_h_slider_mouse_exited"]
+[connection signal="value_changed" from="AudioOptions/VBoxContainer/MasterHSlider" to="AudioOptions" method="_on_master_h_slider_value_changed"]
 [connection signal="mouse_exited" from="AudioOptions/VBoxContainer/MusicHSlider" to="AudioOptions" method="_on_music_h_slider_mouse_exited"]
+[connection signal="value_changed" from="AudioOptions/VBoxContainer/MusicHSlider" to="AudioOptions" method="_on_music_h_slider_value_changed"]
+[connection signal="drag_ended" from="AudioOptions/VBoxContainer/SfxHSlider" to="AudioOptions" method="_on_sfx_h_slider_drag_ended"]
 [connection signal="mouse_exited" from="AudioOptions/VBoxContainer/SfxHSlider" to="AudioOptions" method="_on_sfx_h_slider_mouse_exited"]
+[connection signal="value_changed" from="AudioOptions/VBoxContainer/SfxHSlider" to="AudioOptions" method="_on_sfx_h_slider_value_changed"]
 [connection signal="mouse_entered" from="AudioOptions/ConfirmButton" to="." method="_on_confirm_button_mouse_entered"]
 [connection signal="pressed" from="AudioOptions/ConfirmButton" to="." method="_on_confirm_button_pressed"]
