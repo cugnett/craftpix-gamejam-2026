@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://b8heu0llk34ga" path="res://assets/sfx/sitar_defeated.wav" id="12_i4wik"]
 [ext_resource type="Script" uid="uid://cmh1lu202d7mb" path="res://scripts/ray_cast.gd" id="13_wfflf"]
 [ext_resource type="AudioStream" uid="uid://s8mn68xvn1bh" path="res://assets/sfx/laser_beam.mp3" id="14_6ieop"]
+[ext_resource type="Shader" uid="uid://b5v0as41mugnr" path="res://shaders/glow_line.gdshader" id="14_cl4u6"]
+[ext_resource type="Texture2D" uid="uid://5031tleusdcl" path="res://assets/particles/glowing_circle.png" id="14_lgqhb"]
 [ext_resource type="AudioStream" uid="uid://dl0qmua44p4ow" path="res://assets/sfx/laser_burn.wav" id="15_k4w31"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5aub"]
@@ -81,7 +83,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wfflf"]
 resource_name = "buddha_laser"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -123,6 +125,30 @@ _data = {
 &"clouds": SubResource("Animation_pmkd0"),
 &"player_burning": SubResource("Animation_k4w31")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3b725"]
+shader = ExtResource("14_cl4u6")
+shader_parameter/glow_color = Color(0.992, 0.396, 0.616, 1)
+shader_parameter/glow_power = 2.20000003278264
+shader_parameter/glow_shift = 1.0
+shader_parameter/glow_radius = 5.0
+
+[sub_resource type="Curve" id="Curve_aqqed"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.50173014, 1), 0.0, -2.0352113, 0, 0, Vector2(0.9930796, 0), -0.820664, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_cl4u6"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_lgqhb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cl4u6"]
+shader = ExtResource("14_cl4u6")
+shader_parameter/glow_color = Color(0.992, 0.396, 0.616, 1)
+shader_parameter/glow_power = 2.20000003278264
+shader_parameter/glow_shift = 10.0
+shader_parameter/glow_radius = 10.0
 
 [node name="EndScene" type="Node2D" unique_id=447971128]
 script = ExtResource("1_notft")
@@ -196,6 +222,7 @@ libraries/ = SubResource("AnimationLibrary_pmkd0")
 [node name="EndMusic" type="AudioStreamPlayer" parent="." unique_id=1318301473]
 stream = ExtResource("8_hyprt")
 volume_db = -14.791
+bus = &"Music"
 
 [node name="DialogueActionable2D" type="Area2D" parent="." unique_id=1033838932]
 script = ExtResource("10_24b1x")
@@ -205,21 +232,59 @@ metadata/_custom_type_script = "uid://cqcur1rm7433g"
 
 [node name="BuddhaArrival" type="AudioStreamPlayer" parent="." unique_id=632641932]
 stream = ExtResource("12_i4wik")
+bus = &"Sfx"
 
 [node name="Laser" type="RayCast2D" parent="." unique_id=706965893]
 position = Vector2(272, 88)
-target_position = Vector2(88, 200)
+target_position = Vector2(88.205, 200)
 script = ExtResource("13_wfflf")
 
 [node name="Line2D" type="Line2D" parent="Laser" unique_id=647409160]
 visible = false
+self_modulate = Color(0.99215686, 0.39607844, 0.6156863, 1)
+material = SubResource("ShaderMaterial_3b725")
 position = Vector2(-133.70645, -100.06894)
 scale = Vector2(4.767776, 3.3076148)
 points = PackedVector2Array(46.451614, 90.74626, 36.86416, 60.500908, 27.52688, 31.044775)
 width = 2.0
-default_color = Color(0.9924765, 0.3957122, 0.61378974, 1)
+default_color = Color(0.99215686, 0.39607844, 0.6156863, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="CastingLaserParticles" type="CPUParticles2D" parent="Laser" unique_id=321161262]
+visible = false
+self_modulate = Color(0.99215686, 0.39607844, 0.6156863, 1)
+show_behind_parent = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_lgqhb")
+lifetime = 0.4
+local_coords = true
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_aqqed")
+color = Color(0.99215686, 0.39607844, 0.6156863, 1)
+color_ramp = SubResource("Gradient_cl4u6")
+
+[node name="CollisionLaserParticles" type="CPUParticles2D" parent="Laser" unique_id=786121044]
+self_modulate = Color(0.99215686, 0.39607844, 0.6156863, 1)
+show_behind_parent = true
+position = Vector2(82, 198)
+scale = Vector2(0.5, 0.5)
+amount = 16
+texture = ExtResource("14_lgqhb")
+lifetime = 0.3
+spread = 50.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 180.0
+initial_velocity_max = 180.0
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_aqqed")
+color = Color(0.99215686, 0.39607844, 0.6156863, 1)
+color_ramp = SubResource("Gradient_lgqhb")
 
 [node name="Laser2" type="RayCast2D" parent="." unique_id=603497010]
 position = Vector2(304, 88)
@@ -228,6 +293,7 @@ script = ExtResource("13_wfflf")
 
 [node name="Line2D" type="Line2D" parent="Laser2" unique_id=816415751]
 visible = false
+material = SubResource("ShaderMaterial_cl4u6")
 position = Vector2(-127.26888, -100.06893)
 scale = Vector2(4.633111, 3.3076148)
 points = PackedVector2Array(41.29032, 90.74626, 27.52688, 31.044775)
@@ -236,10 +302,47 @@ default_color = Color(0.9924765, 0.3957122, 0.61378974, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
+[node name="CastingLaserParticles" type="CPUParticles2D" parent="Laser2" unique_id=652740077]
+visible = false
+self_modulate = Color(0.99215686, 0.39607844, 0.6156863, 1)
+show_behind_parent = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_lgqhb")
+lifetime = 0.4
+local_coords = true
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_aqqed")
+color = Color(0.99215686, 0.39607844, 0.6156863, 1)
+color_ramp = SubResource("Gradient_cl4u6")
+
+[node name="CollisionLaserParticles" type="CPUParticles2D" parent="Laser2" unique_id=1631101825]
+self_modulate = Color(0.99215686, 0.39607844, 0.6156863, 1)
+show_behind_parent = true
+position = Vector2(64, 197)
+scale = Vector2(0.5, 0.5)
+amount = 16
+texture = ExtResource("14_lgqhb")
+lifetime = 0.3
+spread = 50.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 180.0
+initial_velocity_max = 180.0
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_aqqed")
+color = Color(0.99215686, 0.39607844, 0.6156863, 1)
+color_ramp = SubResource("Gradient_lgqhb")
+
 [node name="LaserSound" type="AudioStreamPlayer" parent="." unique_id=1138713107]
 stream = ExtResource("14_6ieop")
+bus = &"Sfx"
 
 [node name="BurningSound" type="AudioStreamPlayer" parent="." unique_id=1508753491]
 stream = ExtResource("15_k4w31")
+bus = &"Sfx"
 
 [connection signal="body_entered" from="EndArea" to="." method="_on_end_area_body_entered"]

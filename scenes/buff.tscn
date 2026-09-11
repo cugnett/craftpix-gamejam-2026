@@ -35,5 +35,6 @@ metadata/_custom_type_script = "uid://cdvjksfcv5org"
 one_shot = true
 
 [node name="BuffSound" type="AudioStreamPlayer" parent="." unique_id=1594468771]
+bus = &"Sfx"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -9,6 +9,8 @@ script = ExtResource("1_ks1gq")
 
 [node name="DoorClose" type="AudioStreamPlayer" parent="." unique_id=846510051]
 stream = ExtResource("2_devoi")
+bus = &"Sfx"
 
 [node name="DoorOpen" type="AudioStreamPlayer" parent="." unique_id=647164740]
 stream = ExtResource("3_xl0gr")
+bus = &"Sfx"

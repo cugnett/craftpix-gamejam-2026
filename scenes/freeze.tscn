@@ -26,6 +26,7 @@ one_shot = true
 
 [node name="FreezeSound" type="AudioStreamPlayer" parent="." unique_id=1501076646]
 stream = ExtResource("4_ql0iy")
+bus = &"Sfx"
 
 [connection signal="finished" from="FreezeFX" to="." method="_on_freeze_fx_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
