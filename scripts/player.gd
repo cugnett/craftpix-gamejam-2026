@@ -209,7 +209,7 @@ func take_damage(taked_damage: float):
 		animated_sprite_2d.visible = false
 		animated_sprite_death.visible = true
 		animated_sprite_death.play("death")
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(1.5).timeout
 		ChangeScene.change_scene(ChangeScene.death_menu)
 
 

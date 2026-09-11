@@ -52,8 +52,13 @@ func _activate_spawner(player_map_position: Vector2, player_position: Vector2) -
 	for i in randi_range(1,4):
 		instance = enemy.instantiate()
 		enemy_nb += 1
+
 		instance.position.x = player_map_position.x * camera_width + randi_range(48,camera_width-48)
 		instance.position.y = player_map_position.y * camera_height + randi_range(48,camera_height-48)
+		# Do not get too close to the player
+		while instance.position.distance_to(player_position) < 120:
+			instance.position.x = player_map_position.x * camera_width + randi_range(48,camera_width-48)
+			instance.position.y = player_map_position.y * camera_height + randi_range(48,camera_height-48)
 		print("enemy pos" + str(i) + ":"+ str(instance.position))
 		instance.tree_exited.connect(on_enemy_exited)
 		get_parent().add_child(instance)
