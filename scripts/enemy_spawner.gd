@@ -27,7 +27,7 @@ var room_list = [
 	room_boss,
 	room_end
 	] 
-var room_ramp = 0
+var room_ramp = 1
 
 var current_room = Vector2(0,1)
 
