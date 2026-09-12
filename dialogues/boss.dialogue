@@ -2,6 +2,5 @@
 TamonTEN: I am TA-MON-TEEEEN !!!
 TamonTEN: Lord of treasures, and guardian of the Northern Direction.
 TamonTEN: I will never let you get to Buddha!
-do play_boss_music()
 do _start_fight()
 => END

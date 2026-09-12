@@ -115,43 +115,168 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(-42.999996, -27.999998)]
 }
-
-[sub_resource type="Animation" id="Animation_0r81y"]
-resource_name = "head"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.008333206, 2.0083332, 4.008333),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rat:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -100), Vector2(0, -95), Vector2(0, -100)]
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Head:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Body:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7bswl"]
-resource_name = "lefthand"
-length = 3.0000000000000004
-loop_mode = 1
+resource_name = "death2"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LeftHand:rotation")
+tracks/0/path = NodePath("Rat:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 0.17453292519943295, 0.0]
+"values": [Vector2(1, -10), Vector2(-90, 43)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(32, -26), Vector2(214, -43)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("LeftHand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -100), Vector2(110, 85)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("RightHand:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LeftHand:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-42.999996, -27.999998), Vector2(-210, 13)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rat:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.2689280275926285]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Head:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.443460952792061]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Body:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_r2l3g"]
-resource_name = "rat"
+resource_name = "idle"
 length = 3.0000000000000004
 loop_mode = 1
 tracks/0/type = "value"
@@ -239,65 +364,158 @@ tracks/6/keys = {
 "values": [Vector2(-42.999996, -27.999998), Vector2(-43, -38), Vector2(-43, -28)]
 }
 
-[sub_resource type="Animation" id="Animation_vcpdo"]
-resource_name = "right_hand"
-length = 3.0000000000000004
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RightHand:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(32, -26), Vector2(36, -30), Vector2(32, -26)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r2l3g"]
 _data = {
 &"RESET": SubResource("Animation_wg0is"),
-&"head": SubResource("Animation_0r81y"),
-&"lefthand": SubResource("Animation_7bswl"),
-&"rat": SubResource("Animation_r2l3g"),
-&"right_hand": SubResource("Animation_vcpdo")
+&"death2": SubResource("Animation_7bswl"),
+&"idle": SubResource("Animation_r2l3g")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bswl"]
-size = Vector2(278, 100)
+size = Vector2(278, 300)
+
+[sub_resource type="Animation" id="Animation_ag6xs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/ColorRectBody:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.12156863, 0.11372549, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_18dar"]
+resource_name = "boss_damage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/ColorRectBody:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightHand/ColorRectRH:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftHand/ColorRectLH:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/ColorRectHead:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0), Color(1, 0.12156863, 0.11372549, 0.5764706), Color(1, 0.12156863, 0.11372549, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t62ry"]
+_data = {
+&"RESET": SubResource("Animation_ag6xs"),
+&"boss_damage": SubResource("Animation_18dar")
+}
 
 [node name="BossTamonten" type="CharacterBody2D" unique_id=964823735]
 z_index = 1
 position = Vector2(1618, -165)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_0r81y")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1294284638]
+clip_children = 2
 texture = SubResource("AtlasTexture_ybnn0")
 
+[node name="ColorRectBody" type="ColorRect" parent="Body" unique_id=1174441698]
+offset_left = -113.0
+offset_top = -150.0
+offset_right = 92.0
+offset_bottom = 93.0
+color = Color(1, 0.12156863, 0.11372549, 0)
+
 [node name="RightHand" type="Sprite2D" parent="." unique_id=1955792631]
+clip_children = 2
 position = Vector2(32, -26)
 texture = SubResource("AtlasTexture_hb335")
 offset = Vector2(-21, 16)
 
+[node name="ColorRectRH" type="ColorRect" parent="RightHand" unique_id=755128909]
+offset_left = -113.0
+offset_top = -150.0
+offset_right = 92.0
+offset_bottom = 93.0
+color = Color(1, 0.12156863, 0.11372549, 0)
+
 [node name="LeftHand" type="Sprite2D" parent="." unique_id=629896408]
+clip_children = 2
 position = Vector2(-42.999996, -27.999998)
 texture = SubResource("AtlasTexture_l5aub")
 offset = Vector2(-28.631073, 16.59464)
 
+[node name="ColorRectLH" type="ColorRect" parent="LeftHand" unique_id=1641714807]
+offset_left = -113.0
+offset_top = -150.0
+offset_right = 92.0
+offset_bottom = 93.0
+color = Color(1, 0.12156863, 0.11372549, 0)
+
 [node name="Rat" type="Sprite2D" parent="." unique_id=1001029561]
+clip_children = 2
 position = Vector2(0, -14)
 texture = SubResource("AtlasTexture_cejmw")
 
+[node name="ColorRectRat" type="ColorRect" parent="Rat" unique_id=804171373]
+offset_left = -113.0
+offset_top = -150.0
+offset_right = 92.0
+offset_bottom = 93.0
+color = Color(1, 0.12156863, 0.11372549, 0)
+
 [node name="Head" type="Sprite2D" parent="." unique_id=1430081292]
+clip_children = 2
 position = Vector2(-3, -103)
 texture = SubResource("AtlasTexture_hwbsy")
 
+[node name="ColorRectHead" type="ColorRect" parent="Head" unique_id=223966621]
+offset_left = -113.0
+offset_top = -150.0
+offset_right = 92.0
+offset_bottom = 93.0
+color = Color(1, 0.12156863, 0.11372549, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=434074532]
-visible = false
 position = Vector2(-3, -25)
 shape = SubResource("CapsuleShape2D_r2l3g")
 
@@ -307,22 +525,34 @@ libraries/ = SubResource("AnimationLibrary_r2l3g")
 [node name="BossHitArea" type="Area2D" parent="." unique_id=1846477683]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BossHitArea" unique_id=1127650869]
-visible = false
-polygon = PackedVector2Array(-102, -8, -63, -22, -56, -33, -69, -63, -53, -97, -33, -137, -2, -151, 37, -125, 74, -61, 64, -31, 63, 9, 49, 44, 53, 70, 32, 85, -39, 75, -62, 74, -66, 10, -102, 13)
+polygon = PackedVector2Array(-102, -8, -63, -22, -56, -27, -1, -27, 58, -26, 63, 9, 61, 44, 53, 70, 32, 85, -39, 75, -62, 74, -66, 10, -102, 13)
 
 [node name="DialogueActionable2D" type="Area2D" parent="." unique_id=1911746334]
+position = Vector2(-2, -3)
 script = ExtResource("3_r2l3g")
 dialogue_resource = ExtResource("4_7bswl")
 dialogue_cue = "start"
 metadata/_custom_type_script = "uid://cqcur1rm7433g"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1995359088]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=16958785]
-position = Vector2(-6, 80)
+position = Vector2(-6, -20)
 shape = SubResource("RectangleShape2D_7bswl")
 
 [node name="MoveTimer" type="Timer" parent="." unique_id=2073968398]
 
+[node name="AttackChargeTimer" type="Timer" parent="." unique_id=1805948605]
+wait_time = 2.0
+
+[node name="AttackChargeTriggerTimer" type="Timer" parent="." unique_id=46729400]
+wait_time = 5.0
+
+[node name="Effects" type="AnimationPlayer" parent="." unique_id=652455749]
+libraries/ = SubResource("AnimationLibrary_t62ry")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="AttackChargeTimer" to="." method="_on_attack_charge_timer_timeout"]
+[connection signal="timeout" from="AttackChargeTriggerTimer" to="." method="_on_attack_charge_trigger_timer_timeout"]

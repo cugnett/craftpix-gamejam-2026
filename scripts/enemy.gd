@@ -2,6 +2,7 @@ class_name Enemy
 extends CharacterBody2D
 
 const SPEED = 70.0
+var speed = SPEED
 
 var health: float = 5
 var damage: float = 1
@@ -34,7 +35,7 @@ func _attack(delta: float) -> void:
 	else:
 		direction = (target.position - position).normalized()
 		if !freezed:
-			position += direction * SPEED * delta
+			position += direction * speed * delta
 	
 	#get last direction orientation
 	if direction != Vector2.ZERO:
