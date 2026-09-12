@@ -33,6 +33,7 @@ var current_room = Vector2(0,1)
 var enemies: Dictionary = {
 	"easy_cultist": preload("res://ressources/easy_cultist.tres"),
 	"medium_cultist": preload("res://ressources/medium_cultist.tres"),
+	"hard_cultist": preload("res://ressources/hard_cultist.tres"),
 }
 var enemies_name = enemies.keys()
 

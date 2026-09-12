@@ -7,9 +7,9 @@
 [resource]
 script = ExtResource("1_78xfe")
 name = "explosion"
-power = 3.0
+power = 2.5
 speed = 150.0
-cooldown = 0.5
+cooldown = 0.7
 particle_scene = ExtResource("1_8avxf")
 text = "[shake]Explosion[/shake]"
 text_color = Color(0.74509805, 0.23137255, 0.11764706, 1)

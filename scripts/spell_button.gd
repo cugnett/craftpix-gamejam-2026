@@ -26,13 +26,29 @@ func randomize_upgrade():
 	match randi_stat_upgraded:
 		0:
 			stat_upgraded = "Power"
-			upgrade_multiplier = snapped(base_upgrade_multiplier * 2 + 1, 0.1)
+			match spell_name:
+				"Explosion":
+					upgrade_multiplier = snapped(base_upgrade_multiplier + 0.5, 0.1)
+				"Freeze":
+					upgrade_multiplier = snapped(base_upgrade_multiplier / 3 + 0.1, 0.1)
+				"Shield":
+					upgrade_multiplier = snapped(base_upgrade_multiplier + 1, 0.1)
 		1:
 			stat_upgraded = "Cooldown"
-			upgrade_multiplier = snapped(base_upgrade_multiplier / 5, 0.1) + 0.1
+			match spell_name:
+				"Explosion":
+					upgrade_multiplier = snapped(base_upgrade_multiplier / 10 + 0.1, 0.1) 
+				"Freeze":
+					upgrade_multiplier = snapped(base_upgrade_multiplier / 10 + 0.1, 0.1) 
+				"Shield":
+					upgrade_multiplier = snapped(base_upgrade_multiplier / 8 + 0.6, 0.1) 
 		2:
 			stat_upgraded = "Speed"
-			upgrade_multiplier = snapped(base_upgrade_multiplier * 10 + 10, 0.1)
+			match spell_name:
+				"Explosion":
+					upgrade_multiplier = snapped(base_upgrade_multiplier * 10 + 10, 0.1)
+				"Freeze":
+					upgrade_multiplier = snapped(base_upgrade_multiplier * 10 + 10, 0.1)
 	
 
 
