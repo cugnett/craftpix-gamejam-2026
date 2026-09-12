@@ -33,6 +33,7 @@ offset_top = -19.0
 offset_right = 8.0
 offset_bottom = 8.0
 scale = Vector2(1.2814987, 1.3519071)
+color = Color(1, 1, 1, 0)
 
 [node name="Sight" type="Area2D" parent="." unique_id=1806086486]
 

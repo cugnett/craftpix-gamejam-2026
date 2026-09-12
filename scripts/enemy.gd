@@ -1,6 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
+
 var freezed: bool = false
 var is_frozen: bool = false
 var speed: float
