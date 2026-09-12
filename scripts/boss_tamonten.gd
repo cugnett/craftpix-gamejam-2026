@@ -129,6 +129,7 @@ func _manage_phase():
 			# death animation then :
 			kill_rats()
 			$AnimationPlayer.play("death2")
+			SignalManager.boss_defeated.emit()
 		
 
 func kill_rats():
