@@ -69,15 +69,15 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_b1kog")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1936986008]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.505
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.505
 offset_left = -188.0
-offset_top = -102.0
+offset_top = -79.23999
 offset_right = 187.8125
-offset_bottom = 198.5
+offset_bottom = 117.76001
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -106,18 +106,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_s0oe1")
 theme_override_styles/focus = SubResource("StyleBoxFlat_trkcg")
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=750213889]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_5byqq")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_ruo1u")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_gqu1h")
-theme_override_styles/hover = SubResource("StyleBoxFlat_s0oe1")
-theme_override_styles/focus = SubResource("StyleBoxFlat_trkcg")
-text = "Exit"
-
 [node name="Label" type="Label" parent="." unique_id=1268012771]
 layout_mode = 1
 anchors_preset = 8
@@ -133,7 +121,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_5byqq")
 theme_override_font_sizes/font_size = 68
-text = "Don't speak TenTen"
+text = "Rebellious Voice"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -158,5 +146,3 @@ layout_mode = 1
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="button_up" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_button_up"]
-[connection signal="mouse_entered" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_mouse_entered"]
