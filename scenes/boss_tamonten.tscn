@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b4ix1wewkbpvm" path="res://assets/characters/tamonten_north_pieces.png" id="1_wg0is"]
 [ext_resource type="Script" uid="uid://cqcur1rm7433g" path="res://addons/dialogue_manager/nodes/actionable/dialogue_actionable_2d.gd" id="3_r2l3g"]
 [ext_resource type="Resource" uid="uid://dhdrtdqrgn85c" path="res://dialogues/boss.dialogue" id="4_7bswl"]
+[ext_resource type="AudioStream" uid="uid://bj06yde7pyl1d" path="res://assets/sfx/rat_invocation.wav" id="5_vcpdo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybnn0"]
 atlas = ExtResource("1_wg0is")
@@ -551,6 +552,10 @@ wait_time = 5.0
 
 [node name="Effects" type="AnimationPlayer" parent="." unique_id=652455749]
 libraries/ = SubResource("AnimationLibrary_t62ry")
+
+[node name="RatInvocationSfx" type="AudioStreamPlayer" parent="." unique_id=516108904]
+stream = ExtResource("5_vcpdo")
+bus = &"Sfx"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

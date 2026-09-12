@@ -5,8 +5,8 @@ const SPEED = 70.0
 const CHARGE_SPEED = 180.0
 var speed = SPEED
 
-var health: float = 1
-const MAX_HEALTH = 1
+var health: float = 150
+const MAX_HEALTH = 150
 var damage: float = 1
 var min_x_position = 1440 
 var max_x_position = 1780
@@ -120,7 +120,8 @@ func _manage_phase():
 		_create_rat_instance(Vector2(0,0))
 	if health < MAX_HEALTH * 1/3 and activate_phase_3 == false:
 		activate_phase_3 = true
-		_create_rat_instance(Vector2(0,0))		
+		_create_rat_instance(Vector2(0,0))	
+		await $RatInvocationSfx.finished
 		_create_rat_instance(Vector2(50,50))
 	if health <= 0 and death_phase == false:
 			death_phase = true
@@ -137,6 +138,9 @@ func kill_rats():
 			rat.queue_free()
 
 func _create_rat_instance(position_offset):
+		
+		$RatInvocationSfx.play()
+		
 		rat_instance = rat.instantiate()
 		
 		rat_instance.speed = 100
@@ -199,6 +203,7 @@ func _create_rat_instance(position_offset):
 		rat_list.append(rat_instance)
 		get_parent().add_child(rat_instance)
 		rat_instance.get_node("AnimatedSprite2D").play("idle_left")
+		
 		
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and dialog_unplayed:
