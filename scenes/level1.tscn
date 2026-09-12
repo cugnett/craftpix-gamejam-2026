@@ -18,7 +18,6 @@
 [ext_resource type="AudioStream" uid="uid://cplm3fq1dexc3" path="res://assets/musics/Acid-Trips.mp3" id="17_14jow"]
 [ext_resource type="AudioStream" uid="uid://bo70d0gbrfhlc" path="res://assets/musics/ayitsmatt-the-law-of-the-samurai.mp3" id="18_jvkml"]
 [ext_resource type="PackedScene" uid="uid://bhl6ejeo6lwpg" path="res://scenes/boss_tamonten.tscn" id="18_mvsps"]
-[ext_resource type="PackedScene" uid="uid://blt17pspfg8iw" path="res://scenes/enemy.tscn" id="19_jvkml"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hb335"]
 font = ExtResource("12_2ku1j")
@@ -142,7 +141,7 @@ text = "Speak"
 label_settings = SubResource("LabelSettings_hb335")
 
 [node name="Player" parent="." unique_id=512779361 instance=ExtResource("2_wwpf4")]
-position = Vector2(1452, -51.999985)
+position = Vector2(156.00003, 164)
 player_map_position = Vector2(0, 0)
 
 [node name="AudioStreamBackground" type="AudioStreamPlayer" parent="." unique_id=384151323]
@@ -167,9 +166,6 @@ libraries/ = SubResource("AnimationLibrary_jvkml")
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="." unique_id=473875087]
 stream = ExtResource("18_jvkml")
-
-[node name="Enemy" parent="." unique_id=1841075107 instance=ExtResource("19_jvkml")]
-position = Vector2(1729, -94)
 
 [connection signal="change_camera_pos_x" from="Player" to="." method="_on_player_change_camera_pos_x"]
 [connection signal="change_camera_pos_y" from="Player" to="." method="_on_player_change_camera_pos_y"]

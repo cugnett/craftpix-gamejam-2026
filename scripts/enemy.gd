@@ -1,21 +1,22 @@
 class_name Enemy
 extends CharacterBody2D
 
-const SPEED = 70.0
-
-var health: float = 5
-var damage: float = 1
 var freezed: bool = false
 var is_frozen: bool = false
+var speed: float
+var health: float
+var damage: float
 
-@onready
-var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var enemy_color_rect: ColorRect = $AnimatedSprite2D/EnemyColorRect
 
 
 var last_direction: Vector2 = Vector2.DOWN
 var target = null
 
-
+func _ready() -> void:
+	pass
 
 func _physics_process(_delta: float) -> void:
 	if !is_frozen:
@@ -34,7 +35,7 @@ func _attack(delta: float) -> void:
 	else:
 		direction = (target.position - position).normalized()
 		if !freezed:
-			position += direction * SPEED * delta
+			position += direction * speed * delta
 	
 	#get last direction orientation
 	if direction != Vector2.ZERO:
@@ -92,3 +93,8 @@ func freeze(freeze_power: float) -> void:
 func _on_freeze_timer_timeout() -> void:
 	freezed = false
 	#normal sprite
+
+func init_enemy_type(sprite_color: Color, hp: float, dmg: float) -> void:
+	enemy_color_rect.color = sprite_color
+	health = hp
+	damage = dmg

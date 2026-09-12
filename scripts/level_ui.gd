@@ -10,7 +10,7 @@ func _ready() -> void:
 	_display_player_health()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _get_player_health() -> void:

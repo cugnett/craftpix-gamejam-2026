@@ -20,6 +20,12 @@ var background_music_position: float # position in background music
 var room_activated = false
 var enemy_nb = 0
 
+var enemies: Dictionary = {
+	"easy_cultist": preload("res://ressources/easy_cultist.tres"),
+	"medium_cultist": preload("res://ressources/medium_cultist.tres"),
+}
+var enemies_name = enemies.keys()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -51,6 +57,7 @@ func _activate_spawner(player_map_position: Vector2, player_position: Vector2) -
 	_start_fight_music()
 	for i in randi_range(1,4):
 		instance = enemy.instantiate()
+		_init_stats_enemy(instance, _rand_enemy_type())
 		enemy_nb += 1
 
 		instance.position.x = player_map_position.x * camera_width + randi_range(48,camera_width-48)
@@ -69,7 +76,18 @@ func _activate_spawner(player_map_position: Vector2, player_position: Vector2) -
 	print("barrier pos" + str(instance_barrier.position))
 	get_parent().add_child(instance_barrier)
 	print(enemy_nb)
-	
+
+func _rand_enemy_type() -> EnemyRessource:
+	print(enemies_name)
+	var enemy_index = randi_range(0, enemies_name.size() - 1)
+	return enemies[enemies_name[enemy_index]]
+
+func _init_stats_enemy(enemy: Node2D,  enemy_type: EnemyRessource) -> void:
+	enemy.get_node("AnimatedSprite2D").sprite_frames = enemy_type.animatedSprite
+	enemy.get_node("AnimatedSprite2D").get_node("EnemyColorRect").color = enemy_type.color_sprite
+	enemy.speed = enemy_type.speed
+	enemy.health = enemy_type.health
+	enemy.damage = enemy_type.damage
 
 func _on_player_player_is_in_room(player_map_position, player_position) -> void:
 	print("ACTIVATE!")

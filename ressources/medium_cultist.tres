@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyRessource" format=3 uid="uid://bhic3r225hlqr"]
+
+[ext_resource type="Script" uid="uid://cmmkygxr87w8t" path="res://scripts/enemy_ressource.gd" id="1_nw7ua"]
+[ext_resource type="SpriteFrames" uid="uid://c4m8dtiv7ia3q" path="res://ressources/cultist_sprite_frames.tres" id="1_whaxg"]
+
+[resource]
+script = ExtResource("1_nw7ua")
+health = 8.0
+damage = 2.0
+speed = 70.0
+animatedSprite = ExtResource("1_whaxg")
+color_sprite = Color(0.21960784, 0.5254902, 0.22352941, 0.60784316)
+metadata/_custom_type_script = "uid://cmmkygxr87w8t"

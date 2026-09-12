@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyRessource" format=3 uid="uid://dyff6108imghb"]
+
+[ext_resource type="Script" uid="uid://cmmkygxr87w8t" path="res://scripts/enemy_ressource.gd" id="1_4umjg"]
+[ext_resource type="SpriteFrames" uid="uid://c4m8dtiv7ia3q" path="res://ressources/cultist_sprite_frames.tres" id="1_6txoa"]
+
+[resource]
+script = ExtResource("1_4umjg")
+name = "Easy cultist"
+health = 5.0
+damage = 1.0
+speed = 70.0
+animatedSprite = ExtResource("1_6txoa")
+color_sprite = Color(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://cmmkygxr87w8t"
