@@ -11,6 +11,8 @@ extends Node2D
 @export var book_close_sfx: AudioStreamWAV
 @export var book_open_sfx: AudioStreamWAV
 
+var knockback_force: float = 150.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false

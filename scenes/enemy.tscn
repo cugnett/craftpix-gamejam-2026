@@ -12,6 +12,8 @@ resource_local_to_scene = true
 radius = 111.040535
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb335"]
+radius = 9.0
+height = 26.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1841075107]
 z_index = 1

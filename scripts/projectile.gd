@@ -5,6 +5,7 @@ var TextLabel: RichTextLabel = $Control/TextLabel
 
 var direction: Vector2
 var weapon: WeaponRessource
+var knockback_force: float = 150.0
 
 func _ready() -> void:
 	# play projectile launch sound
@@ -30,6 +31,9 @@ func _on_body_entered(body: Node2D) -> void:
 			"explosion":
 				if body.has_method("take_damage"):
 					body.take_damage(weapon.power)
+					if body.has_method("apply_knockback"):
+						var knockback_direction = (body.global_position - global_position). normalized()
+						body.apply_knockback(knockback_direction, knockback_force, 0.12)
 			"freeze":
 				if body.has_method("frozen"):
 					body.frozen(weapon.power)

@@ -15,16 +15,26 @@ var damage: float
 
 var last_direction: Vector2 = Vector2.DOWN
 var target = null
+var knockback: Vector2 = Vector2.ZERO
+var knockback_timer: float = 0.0
 
 func _ready() -> void:
 	pass
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if !is_frozen:
-		_process_animation()
-		if target:	
-			_attack(_delta)
-			move_and_slide()
+		if knockback_timer > 0.0:
+			velocity = knockback
+			knockback_timer -= delta
+			print("knockbar in : " + str(knockback_timer))
+			if knockback_timer <= 0.0:
+				knockback = Vector2.ZERO
+				velocity = Vector2.ZERO
+				print("end knockbar : " + str(knockback_timer))
+		elif target:
+			_process_animation()
+			_attack(delta)
+	move_and_slide()
 
 
 
@@ -99,3 +109,7 @@ func init_enemy_type(sprite_color: Color, hp: float, dmg: float) -> void:
 	enemy_color_rect.color = sprite_color
 	health = hp
 	damage = dmg
+
+func apply_knockback(direction: Vector2, force: float, duration: float) -> void:
+	knockback = direction * force
+	knockback_timer = duration
