@@ -75,11 +75,13 @@ func _activate_spawner(player_map_position: Vector2, player_position: Vector2) -
 	var min_enemy_number = 1
 	var max_enemy_number = room_ramp
 	var max_enemy_type = 0 #easy
-	if room_ramp > 0 and room_ramp <= 2:
+	if room_ramp > 0 and room_ramp <= 1:
 		max_enemy_type = 0
-	if room_ramp >= 3:
+	if room_ramp >= 2 and room_ramp <= 3:
 		max_enemy_type = 1 #medium
-	if room_ramp > 3:
+	if room_ramp >= 4:
+		max_enemy_type = 2
+	if room_ramp >= 4:
 		min_enemy_number = 2
 		
 		
