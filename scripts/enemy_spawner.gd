@@ -27,6 +27,7 @@ var room_list = [
 	room_boss,
 	room_end
 	] 
+var room_ramp = 0
 
 var current_room = Vector2(0,1)
 
@@ -38,13 +39,17 @@ var enemies_name = enemies.keys()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	SignalManager.boss_defeated.connect(_on_boss_defeated)
 
+
+func _on_boss_defeated():
+	instance_barrier.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	# Open room if all enemies have been killed
 	if room_activated and enemy_nb == 0:
+		room_ramp += 1
 		print("Victory!")
 		_stop_fight_music()
 		instance_barrier.queue_free()
@@ -55,7 +60,7 @@ func _process(_delta: float) -> void:
 			book_sheet_instance.position.y = current_player_map_position.y * camera_height + randi_range(48,camera_height-48)
 			get_parent().add_child(book_sheet_instance)
 			print(get_parent().name)
-		var lucky = randi_range(0, 10)
+		var lucky = randi_range(0, 20)
 		if lucky == 10:
 			book_sheet_instance = book_sheet.instantiate()
 			book_sheet_instance.position.x = current_player_map_position.x * camera_width + randi_range(48,camera_width-48)
@@ -66,9 +71,20 @@ func _process(_delta: float) -> void:
 func _activate_spawner(player_map_position: Vector2, player_position: Vector2) -> void:
 	print("player pos" + str(player_map_position))
 	_start_fight_music()
-	for i in randi_range(1,4):
+	var min_enemy_number = 1
+	var max_enemy_number = room_ramp
+	var max_enemy_type = 0 #easy
+	if room_ramp > 0 and room_ramp <= 2:
+		max_enemy_type = 0
+	if room_ramp >= 3:
+		max_enemy_type = 1 #medium
+	if room_ramp > 3:
+		min_enemy_number = 2
+		
+		
+	for i in randi_range(min_enemy_number,max_enemy_number):
 		instance = enemy.instantiate()
-		_init_stats_enemy(instance, _rand_enemy_type())
+		_init_stats_enemy(instance, _rand_enemy_type(max_enemy_type))
 		enemy_nb += 1
 
 		instance.position.x = player_map_position.x * camera_width + randi_range(48,camera_width-48)
@@ -90,9 +106,13 @@ func _set_room_barrier(player_map_position):
 	print("barrier pos" + str(instance_barrier.position))
 	get_parent().add_child(instance_barrier)
 
-func _rand_enemy_type() -> EnemyRessource:
+func _rand_enemy_type(max_difficulty) -> EnemyRessource:
+	var max_idx = max_difficulty
 	print(enemies_name)
-	var enemy_index = randi_range(0, enemies_name.size() - 1)
+	#do not go higher than possible
+	if max_difficulty > enemies_name.size() - 1:
+		max_idx = enemies_name.size() - 1
+	var enemy_index = randi_range(0, max_idx)
 	return enemies[enemies_name[enemy_index]]
 
 func _init_stats_enemy(enemy: Node2D,  enemy_type: EnemyRessource) -> void:
