@@ -110,7 +110,6 @@ func _move(delta: float) -> void:
 	
 func _attack_charge() -> void:
 	var player_pos = get_parent().get_node("Player").position
-	#if abs(player_pos.x - position.x) < 100 or abs(player_pos.y - position.y) < 100:
 	attack_charge = true
 	speed = CHARGE_SPEED
 	$AttackChargeTimer.start()

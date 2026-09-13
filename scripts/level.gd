@@ -21,5 +21,5 @@ func _on_player_change_camera_pos_y(player_pos_y) -> void:
 	$Camera2D.position.y = player_pos_y
 
 
-func _on_level_end_body_entered(body: Node2D) -> void:
+func _on_level_end_body_entered(_body: Node2D) -> void:
 	ChangeScene.change_scene(ChangeScene.end_scene)
