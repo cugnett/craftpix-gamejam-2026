@@ -224,3 +224,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			enemy_collision = area
 			print("Ouch")
 			take_damage(area.get_parent().damage)
+
+func set_shield_ready():
+	weapons["shield"].is_ready = true
