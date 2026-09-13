@@ -72,6 +72,8 @@ func _play_animation(prefix: String, dir: Vector2) -> void:
 
 func _on_sight_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		if target == null:
+			SignalManager.enemy_hurted.emit()
 		target = body
 
 func take_damage(taked_damage: float) -> void:
@@ -116,5 +118,6 @@ func apply_knockback(direction: Vector2, force: float, duration: float) -> void:
 	knockback_timer = duration
 
 func enemy_is_hurted():
+	print("call for help")
 	if target == null:
 		target = get_parent().get_node("Player")
