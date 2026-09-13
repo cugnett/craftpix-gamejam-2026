@@ -21,6 +21,7 @@ func _display_player_health() -> void:
 		var hearth_instance = hearth.instantiate()
 		hearth_instance.position = life_position + i * Vector2(16,0) # inst.get_node("Sprite2D").texture.region.w
 		add_child.call_deferred(hearth_instance)
+
 	
 func _update_player_health(value) -> void:
 	var old_player_health = player_health

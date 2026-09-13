@@ -227,3 +227,6 @@ func init_weapon() -> void:
 		"freeze": preload("res://ressources/freeze_weapon.tres"),
 		"shield": preload("res://ressources/shield_weapon.tres"),
 	}
+
+func set_shield_ready():
+	weapons["shield"].is_ready = true
