@@ -19,7 +19,7 @@ var knockback: Vector2 = Vector2.ZERO
 var knockback_timer: float = 0.0
 
 func _ready() -> void:
-	pass
+	SignalManager.enemy_hurted.connect(enemy_is_hurted)
 
 func _physics_process(delta: float) -> void:
 	if !is_frozen:
@@ -81,6 +81,7 @@ func take_damage(taked_damage: float) -> void:
 	# target player if not already
 	if target == null:
 		target = get_parent().get_node("Player")
+		SignalManager.enemy_hurted.emit()
 	# damage animation then :
 	if health <= 0:
 		# death animation then :
@@ -113,3 +114,7 @@ func init_enemy_type(sprite_color: Color, hp: float, dmg: float) -> void:
 func apply_knockback(direction: Vector2, force: float, duration: float) -> void:
 	knockback = direction * force
 	knockback_timer = duration
+
+func enemy_is_hurted():
+	if target == null:
+		target = get_parent().get_node("Player")
