@@ -46,6 +46,7 @@ func _ready() -> void:
 	
 
 func _start_fight() -> void:
+	get_parent().get_node("Player").can_move = true
 	play_boss_music()
 	get_node(hit_area).name = "EnemyHitArea" #change name so that player takes damage
 	hit_area = "EnemyHitArea"
@@ -81,6 +82,7 @@ func take_damage(taked_damage: float) -> void:
 	elif dialog_unplayed:
 		dialog_unplayed = false
 		$DialogueActionable2D.action()
+		get_parent().get_node("Player").can_move = false
 
 
 func _move(delta: float) -> void:
@@ -210,6 +212,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and dialog_unplayed:
 		dialog_unplayed = false
 		$DialogueActionable2D.action()
+		get_parent().get_node("Player").can_move = false
 
 func play_boss_music() -> void:
 	background_music_position = get_parent().get_node("AudioStreamBackground").get_playback_position()

@@ -74,10 +74,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -188.0
-offset_top = -70.0
-offset_right = 187.8125
-offset_bottom = 140.5
+offset_left = -217.1875
+offset_top = -116.5
+offset_right = 217.0
+offset_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -93,6 +93,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gm7js")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ox6ks")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vqs20")
 text = "Restart"
+
+[node name="RestartButton2" type="Button" parent="VBoxContainer" unique_id=1716027237]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_latkk")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_7a6xt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gm7js")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ox6ks")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vqs20")
+text = "Restart with upgrades"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=289709210]
 layout_mode = 2
@@ -144,5 +156,7 @@ layout_mode = 1
 
 [connection signal="mouse_entered" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/RestartButton2" to="." method="_on_restart_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/RestartButton2" to="." method="_on_restart_button_2_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

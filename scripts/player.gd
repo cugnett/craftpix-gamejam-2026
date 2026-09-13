@@ -4,11 +4,7 @@ const SPEED = 200.0
 
 var health: float = 5
 var last_direction: Vector2 = Vector2.RIGHT
-var weapons: Dictionary = {
-	"explosion": preload("res://ressources/explosion_weapon.tres"),
-	"freeze": preload("res://ressources/freeze_weapon.tres"),
-	"shield": preload("res://ressources/shield_weapon.tres"),
-}
+var weapons: Dictionary
 var can_move: bool = true
 var dead: bool = false
 var new_buff # to contain the active buff instance
@@ -45,22 +41,24 @@ signal change_camera_pos_x
 signal player_is_in_room
 signal health_changed
 
-#func _ready() -> void:
-#	effects.play("RESET")
-
+func _ready() -> void:
+	weapons = GlobalWeapons.new_dict_weapons()
+	for weapon in weapons.values():
+		weapon.stock_init_values()
 
 func _physics_process(_delta: float) -> void:	
-	if Input.is_action_just_pressed("explosion") and weapons["explosion"].is_ready:
-		shoot(last_direction, weapons["explosion"])
-	elif Input.is_action_just_pressed("freeze") and weapons["freeze"].is_ready:
-		shoot(last_direction, weapons["freeze"])
-	elif Input.is_action_just_pressed("shield") and weapons["shield"].is_ready:
-		shoot(last_direction, weapons["shield"])
-	
-	_process_movement()
-	_process_animation()
-	_process_collisions()
-	move_and_slide()
+	if can_move:
+		if Input.is_action_just_pressed("explosion") and weapons["explosion"].is_ready:
+			shoot(last_direction, weapons["explosion"])
+		elif Input.is_action_just_pressed("freeze") and weapons["freeze"].is_ready:
+			shoot(last_direction, weapons["freeze"])
+		elif Input.is_action_just_pressed("shield") and weapons["shield"].is_ready:
+			shoot(last_direction, weapons["shield"])
+		
+		_process_movement()
+		_process_animation()
+		_process_collisions()
+		move_and_slide()
 	
 	#Manage camera position
 	move_camera_to_match_player_pos()
@@ -74,7 +72,7 @@ func _process_collisions() -> void:
 func _process_movement() -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
 	
-	if direction != Vector2.ZERO and can_move:
+	if direction != Vector2.ZERO:
 		velocity = direction * SPEED
 		last_direction = direction
 	else :
@@ -217,10 +215,15 @@ func _on_invincibility_timer_timeout() -> void:
 	invincible = false
 	effects.stop(false)
 
-
-
 func _on_area_2d_area_entered(area: Area2D) -> void:
 		if area.name == "EnemyHitArea":
 			enemy_collision = area
 			print("Ouch")
 			take_damage(area.get_parent().damage)
+
+func init_weapon() -> void:
+	weapons = {
+		"explosion": preload("res://ressources/explosion_weapon.tres"),
+		"freeze": preload("res://ressources/freeze_weapon.tres"),
+		"shield": preload("res://ressources/shield_weapon.tres"),
+	}

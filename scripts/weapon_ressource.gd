@@ -18,6 +18,10 @@ enum weapon_type {
 @export var text_color: Color
 @export var launch_sound: AudioStream
 
+var init_power: float
+var init_speed: float
+var init_cooldown: float
+
 func upgrade_power(added_power: float):
 	power += added_power
 	
@@ -26,3 +30,13 @@ func upgrade_speed(added_speed: float):
 	
 func upgrade_cooldown(reduced_cooldown: float):
 	cooldown -= reduced_cooldown
+	
+func stock_init_values():
+	init_power = power
+	init_speed = speed
+	init_cooldown = cooldown
+	
+func reset_values():
+	power = init_power
+	speed = init_speed
+	cooldown = init_cooldown

@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://53xthvhlr1ow"]
+
+[ext_resource type="Script" uid="uid://clgat6cninjjj" path="res://scripts/pause_menu.gd" id="1_5d2l8"]
+[ext_resource type="FontFile" uid="uid://j3foi5fxaayo" path="res://assets/fonts/tinypixel/tinypixel/tinypixel.otf" id="1_myx47"]
+[ext_resource type="PackedScene" uid="uid://2y5dj2bk21ky" path="res://scenes/options_menu.tscn" id="2_kukqi"]
+[ext_resource type="AudioStream" uid="uid://xh1uim54xwec" path="res://assets/sfx/button_hover.wav" id="4_7l7mv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7a6xt"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm7js"]
+bg_color = Color(0.44291073, 0.4429108, 0.4429106, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ox6ks"]
+bg_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqs20"]
+bg_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1648706586]
+process_mode = 1
+script = ExtResource("1_5d2l8")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1531177796]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4745098)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1446069176]
+anchors_preset = -1
+anchor_left = 0.3641493
+anchor_top = 0.4228395
+anchor_right = 0.63585067
+anchor_bottom = 0.5771604
+offset_left = -64.5
+offset_top = -50.0
+offset_right = 64.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer" unique_id=1032723460]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_myx47")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_7a6xt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gm7js")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ox6ks")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vqs20")
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=1592725807]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_myx47")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_7a6xt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gm7js")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ox6ks")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vqs20")
+text = "Options"
+
+[node name="OptionsMenu" parent="." unique_id=758864990 instance=ExtResource("2_kukqi")]
+visible = false
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="." unique_id=1195968074]
+stream = ExtResource("4_7l7mv")
+bus = &"Sfx"
+
+[connection signal="mouse_entered" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

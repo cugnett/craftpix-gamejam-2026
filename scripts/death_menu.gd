@@ -15,8 +15,11 @@ func _process(_delta: float) -> void:
 
 
 func _on_restart_button_pressed() -> void:
+	GlobalWeapons.reset_weapons_stats()
 	ChangeScene.change_scene(ChangeScene.game_scene)
 
+func _on_restart_button_2_pressed() -> void:
+	ChangeScene.change_scene(ChangeScene.game_scene)
 
 func _on_options_button_pressed() -> void:
 	$VBoxContainer.visible = false

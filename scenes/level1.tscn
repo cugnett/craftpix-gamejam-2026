@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cplm3fq1dexc3" path="res://assets/musics/Acid-Trips.mp3" id="17_14jow"]
 [ext_resource type="AudioStream" uid="uid://bo70d0gbrfhlc" path="res://assets/musics/ayitsmatt-the-law-of-the-samurai.mp3" id="18_jvkml"]
 [ext_resource type="PackedScene" uid="uid://bhl6ejeo6lwpg" path="res://scenes/boss_tamonten.tscn" id="18_mvsps"]
+[ext_resource type="PackedScene" uid="uid://53xthvhlr1ow" path="res://scenes/pause_menu.tscn" id="19_jvkml"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hb335"]
 font = ExtResource("12_2ku1j")
@@ -88,6 +89,9 @@ zoom = Vector2(2.531, 2.531)
 
 [node name="HearthUI" type="CanvasLayer" parent="." unique_id=1063301719]
 script = ExtResource("16_dxn3v")
+
+[node name="PauseMenu" parent="." unique_id=958843219 instance=ExtResource("19_jvkml")]
+process_mode = 3
 
 [node name="EnemySpawner" parent="." unique_id=219710564 instance=ExtResource("5_ru4tf")]
 spawner_map_position = Vector2(0, 1)
