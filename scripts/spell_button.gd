@@ -37,11 +37,20 @@ func randomize_upgrade():
 			stat_upgraded = "Cooldown"
 			match spell_name:
 				"Explosion":
-					upgrade_multiplier = snapped(base_upgrade_multiplier / 10 + 0.1, 0.1) 
+					if get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Player").weapons["explosion"].cooldown == 0.0:
+						upgrade_multiplier = 0.0
+					else:
+						upgrade_multiplier = snapped(base_upgrade_multiplier / 10 + 0.1, 0.1) 
 				"Freeze":
-					upgrade_multiplier = snapped(base_upgrade_multiplier / 10 + 0.1, 0.1) 
+					if get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Player").weapons["freeze"].cooldown == 0.0:
+						upgrade_multiplier = 0.0
+					else:
+						upgrade_multiplier = snapped(base_upgrade_multiplier / 10 + 0.1, 0.1) 
 				"Shield":
-					upgrade_multiplier = snapped(base_upgrade_multiplier / 8 + 0.6, 0.1) 
+					if get_parent().get_parent().get_parent().get_parent().get_parent().get_node("Player").weapons["shield"].cooldown == 0.0:
+						upgrade_multiplier = 0.0
+					else:
+						upgrade_multiplier = snapped(base_upgrade_multiplier / 8 + 0.6, 0.1) 
 		2:
 			stat_upgraded = "Speed"
 			match spell_name:

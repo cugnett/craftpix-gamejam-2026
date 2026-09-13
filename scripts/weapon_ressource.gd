@@ -29,7 +29,7 @@ func upgrade_speed(added_speed: float):
 	speed += added_speed
 	
 func upgrade_cooldown(reduced_cooldown: float):
-	cooldown -= reduced_cooldown
+	cooldown = max(cooldown - reduced_cooldown, 0.0)
 	
 func stock_init_values():
 	init_power = power
